@@ -72,7 +72,7 @@
                     if ( $user_type == 'admin' )
                     {
                         $_SESSION ['user_type'] = $user_type;
-                        echo "loggin as admin";
+                        echo "log in as admin";
                         echo $_SESSION ['user_id'] = $row['user_id'];
                         header("Location: home.php");
                         exit ( );
@@ -80,7 +80,7 @@
                     else if ( $user_type == 'regular')
                     {
                         $_SESSION ['user_type'] = $user_type;
-                        echo "loggin as regular";
+                        echo "log in as regular";
                         echo $_SESSION ['user_id'] = $row['user_id'];
                         header("Location: regular.php");
                         exit ( );
