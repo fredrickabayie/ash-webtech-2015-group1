@@ -1,0 +1,272 @@
+
+/* 
+    Created on : Mar 31, 2015, 1:19:09 AM
+    Author     : fredrick.abayie
+*/
+
+body{
+    width: 100%;
+    height: 100%;
+    /*background-color: #F5F5F5;*/
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    z-index: -999;
+}
+
+#header{
+    background-color: darkgreen;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    margin: 0px;
+    border: 0px;
+    text-align: center;
+}
+
+#innerheader{
+    width: 100%;
+    height: 50px;
+}
+
+#innerheaderleft{
+    background-color: blue;
+    width: 273px;
+    height: 50px;
+    border: 0px;
+}
+
+#innerheaderleftlogo{
+    background-color: purple;
+    width: 50px;
+    height: 50px;
+    border: 0px;
+}
+
+#innerheaderright{
+    /*text-align: right;*/
+    background-color: yellow;
+    width: 273px;
+    height: 50px;
+    display: block;
+    border: 0px;
+}
+
+#innerheaderrightprofilepicture{
+    background-color: indigo;
+    width: 50px;
+    height: 50px;
+    border: 0px;
+}
+
+#contentwrapper{
+    position: static;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    width: auto;
+    background-color: yellow;
+    height: auto;
+}
+
+#leftnavigationmenu{
+    background-color: blue;
+    right: auto;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 240px;
+    display: block;
+}
+
+.nav{
+    list-style:none;
+    margin:0px;
+    padding: 0px;
+    /*text-align:center;*/
+}
+
+.nav li{
+    display: block;
+    /*padding-left: 10px*/
+}
+
+.nav a{
+    /*border:1px solid #ccc;*/
+    /*border-width:1px 0;*/
+    display:inline-block;
+    display: block;
+    padding:10px;
+    padding-left: 30px;
+    /*font-size: px;*/
+    color: white;
+}
+
+.nav a:hover{
+    background-color: purple;
+}
+
+.nav:active .nav:visited{
+    
+}
+
+#displaycontainer{
+    background-color: brown;
+    /*right: auto;*/
+    /*left: auto;*/
+    bottom: 0px;
+    left: 242px;
+    top: 0px;
+    height: 100%;
+    width: 620px;
+    position: absolute;
+    /*display: block;*/
+    max-height: 100%; 
+    /*display: inline-table;*/
+}
+
+#searchbar{
+    background-color: indigo;
+    text-align: center;
+}
+
+#searchfield{
+    width: 400px;
+    height: 15%;
+}
+
+#displaycontent{
+    /*position: relative;*/
+    background-color: goldenrod;
+    height: 97.8%;
+    width: 620px;
+}
+
+#previewcontent{
+    /*position: relative;*/
+    background-color: black;
+    height: 97.8%;
+    width: 620px;
+}
+
+#contenttable{
+    margin-left: 20px;
+    margin-right: 5px;
+    border: 1px solid black;
+    width: 570px
+}
+
+#forminput
+{
+margin: 0px;
+border: 1px solid #B8B8B8;
+z-index: 3;
+background: transparent;
+color: #000000;
+    
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;;
+    font-size: 15px;
+    width: 370px;
+    /*margin: 10px;*/
+    /*margin-top: 30px;*/
+    margin-left: 55px;
+    margin-bottom: 20px;
+    height: 30px;
+    border-radius: 3px;
+    
+    font-size: 0.9em;
+font-family: 'Segoe UI' , 'Segoe' , 'SegoeUI-Regular-final', Tahoma, Helvetica, Arial, sans-serif;
+
+-webkit-appearance: textfield;
+padding: 1px;
+background-color: white;
+border: 2px inset;
+/*border-image-source: initial;
+border-image-slice: initial;
+border-image-width: initial;
+border-image-outset: initial;
+border-image-repeat: initial;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;*/
+cursor: auto;
+    
+}
+
+#loginbutton
+{
+    font-size: 17px;
+    box-shadow: none;
+    border-style: none;
+    width: 370px;
+    height: 40px;
+    display: inline-block;
+    background-color: #6496c8;
+    color: white;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-left: 55px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#loginbutton:hover
+{
+    cursor: pointer;
+   background-color: lightblue;
+}
+
+#image{
+    width: 1520px;
+height: 1156px;
+border: 0px;
+margin: 0px;
+padding: 0px;
+    display: block;
+    position: absolute;
+    visibility: visible;
+    display: block;
+    background-color: rgb(235, 60, 0);
+     /*background: url("../..//assets/img/illustration.jpg") no-repeat fixed;*/
+    /*background: #ffffff url(../assets/img/illustration.jpg) ;*/
+}
+
+#background{
+    position: fixed;
+left: 0px;
+top: 0;
+overflow: hidden;
+z-index: 0;
+opacity: 1;
+width: 100%;
+height: 100%;
+transition: opacity 1s;
+-moz-transition: opacity 1s;
+-webkit-transition: opacity 1s;
+-o-transition: opacity 1s;
+-ms-transition: opacity 1s;
+transition-property: opacity;
+transition-duration: 1s;
+background: rgb(235, 60, 0);
+}
+
+div{
+    display: block;
+}
+
+#loginpanel{
+    background: #FFFFFF;
+position: fixed;
+right: 0px;
+float: right;
+height: 100%;
+width: 500px;
+margin: 0px;
+padding: 0px;
+z-index: 1;
+overflow-y: auto;
+overflow-x: hidden;
+}
