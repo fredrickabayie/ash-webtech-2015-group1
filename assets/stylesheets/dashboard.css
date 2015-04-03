@@ -15,7 +15,7 @@ body{
     position: absolute;*/
 }
 
-#maincontainer{
+.maincontainer{
     background-color: lightyellow;
     width: 100%;
     height: 100%;
@@ -26,7 +26,7 @@ body{
     position: absolute;
 }
 
-#innercontainer{
+.innercontainer{
     width: 100%;
     height: 100%;
     background-color: yellow;
@@ -37,7 +37,7 @@ body{
     position: absolute;
 }
 
-#header{
+.header{
     background-color: darkgreen;
     width: 100%;
     height: 50px;
@@ -52,7 +52,7 @@ div{
     display: block;
 }
 
-#inner2container{
+.inner2container{
     background-color: lightcyan;
     overflow: hidden;
     position: absolute;
@@ -64,7 +64,7 @@ div{
     width: auto;
 }
 
-#leftnavmenu{
+.leftnavmenu{
     background-color: lightyellow;
     position: absolute;
     top: 0px;
@@ -72,28 +72,29 @@ div{
     bottom: 0px;
     left: 0px;
     height: auto;
-    width: 226px;
+    width: 256px;
+    /*width: 300px*/
 }
 
-#seperator{
+.seperator{
     position: absolute;
     top: 0px;
     right: auto;
     bottom: 0px;
-    left: 226px;
+    left: 256px;
     height: auto;
     width: 4px;
     cursor: col-resize!important;
     z-index: 1000;
 }
 
-#showcontent{
+.showcontent{
     background-color: lightslategrey;
     position: absolute;
     top: 0px;
     right: auto;
     bottom: 0px;
-    left: 217px;
+    left: 250px;
     height: auto;
     width: 574px;  
     border-left: 1px solid #e5e3e3;
@@ -102,7 +103,7 @@ div{
     z-index: 3;
 }
 
-#showcontenttop{
+.showcontenttop{
     background-color: lightsalmon;
     position: absolute;
     top: 0px;
@@ -113,7 +114,7 @@ div{
     width: auto;
 }
 
-#showcontenttoplabel{
+.showcontenttoplabel{
     background-color: lightgoldenrodyellow;
     margin-left: 0;
     padding-top: 7px;
@@ -126,7 +127,7 @@ div{
     width: auto;
 }
 
-#showcontenttopsearch{
+.showcontenttopsearch{
     background-color: lightseagreen;
     position: absolute;
     top: 40px;
@@ -137,7 +138,7 @@ div{
     width: auto;
 }
 
-#showcontentdetails{
+.showcontentdetails{
     background-color: lightskyblue;
     position: absolute;
     top: 77px;
@@ -148,7 +149,7 @@ div{
     width: auto;
 }
 
-#showcontentdetailsinner{
+.showcontentdetailsinner{
     background-color: chocolate;
     overflow-x: hidden;
     overflow-y: auto;
@@ -159,7 +160,7 @@ div{
     right: 0;
 }
 
-#showcontentdetailsinnertile{
+.showcontentdetailsinnertile{
     background-color: olive;
     width: 556px;
     height: 66px;
@@ -168,11 +169,11 @@ div{
     outline: none;
 }
 
-#showcontentdetailsinnertile:hover{
+.showcontentdetailsinnertile:hover{
     background-color: red;
 }
 
-#showcontentdetailsinnertilecheckbox{
+.showcontentdetailsinnertilecheckbox{
     position: absolute;
     outline: 0;
     z-index: 2;
@@ -185,21 +186,66 @@ div{
     /*filter: alpha(opacity=0);*/
 }
 
-#showcontentdetailsinnertilename{
+.showcontentdetailsinnertilename{
     background-color: seashell;
     position: relative;
     top: 0;
     left: 0;
-    padding: 5px 0 0 0;
+    padding: 5px 0 0 40px;
     height: 23px;
+    color: #333;
+    font-family: "wf_segoe-ui_semilight", "Segoe UI Semilight", "Segoe WP Semilight", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: normal;
 }
 
-#seperator2{
+.showcontentdetailsinnertiletitle{
+    background-color: silver;
+    padding-left: 40px;
+    position: relative;
+    left: 0;
+    /*padding: 0;*/
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin: -1px 0 0 0;
+    height: 17px;
+    color: #333;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.showcontentdetailsinnertiledescription{
+    background-color: rosybrown;
+    margin: -2px 45px 0 23px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    left: 0;
+    height: 23px;
+    padding-left: 17px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    /*padding: 0;*/
+    line-height: normal;
+    white-space: nowrap;
+    pointer-events: none;
+    color: #333;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.seperator2{
     position: absolute;
     top: 0px;
     right: auto;
     bottom: 0px;
-    left: 796px;
+    left: 826px;
     height: auto;
     width: 4px;
     cursor: col-resize!important;
@@ -209,17 +255,72 @@ div{
     z-index: 3;
 }
 
-#showpreview{
+.showpreview{
     background-color: khaki;
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
-    left: 800px;
+    left: 820px;
     height: auto;
     width: auto;
 }
 
+.showpreviewinner{
+    background-color: darkorange;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: auto;
+    width: auto;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 0 0 32px;
+    padding: 18px 20px 0 0;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor: auto;
+}
+
+.showpreviewinnerbuttons{
+    position: relative;
+}
+
+.newtaskbutton{
+    border: 0px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: beige;
+    cursor: pointer;
+}
+
+.newtaskbutton:hover{
+    background-color: yellow;
+}
+
+.deletetaskbutton{
+    border: 0px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: beige;
+    cursor: pointer;
+}
+
+.deletetaskbutton:hover{
+    background-color: yellow;
+}
 
 
 

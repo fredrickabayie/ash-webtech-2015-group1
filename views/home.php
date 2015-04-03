@@ -7,74 +7,86 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+         <meta http-equiv="Pragma" content="no-cache">
+         <meta http-equiv="Expires" content="-1">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         
         <title>DASHBOARD</title>
         
         <!--Custom Css-->
         <link href="../assets/stylesheets/dashboard.css" rel="stylesheet" type="text/css">
         
         <!-- jQuery --> 
-        <script src="../assets/javascripts/jquery-2.1.3.js"></script>
+        <script src="../assets/javascripts/jquery-2.1.3.js" type="text/javascript"></script>
         
-        <script>
+        <!--font awesome-->
+        <link rel="stylesheet" href="../assets/stylesheets/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/stylesheets/font-awesome.css" type="text/css">
+        
+        <script type="text/javascript">
             display ( );
                 //function to get description of task
-        function display( )
-        {
+            function display ( )
+            {
                 var theUrl="../controllers/admin_controller.php?cmd=1";
                 var obj = sendRequest ( theUrl );		
                 if ( obj.result===1)
-                {					
-                        $("#something").text(obj.title);
+                {
+                        $("#header").text(obj.title);
                         console.log(obj.id);
                         console.log(obj.title);
                         console.log(obj.description);
                 }
                 else
                 {
-                        $("#header").text(obj.status);
+//                     $("#header").text(obj.status);
                 }
-        }
-        
-           function sendRequest(u)
-       {
-           var obj = $.ajax({url:u,async:false});
+            }
+
+            function sendRequest(u)
+           {
+               var obj = $.ajax({url:u,async:false});
                 var result=$.parseJSON(obj.responseText);
                 return result;
-        }
+           }
         
         </script>
         
     </head>
     <body>
-        <div id="maincontainer">
-            <div id="innercontainer">
-                <div id="header">
+        <div class="maincontainer">
+            <div class="innercontainer">
+                <div class="header" id="header">
                     
                 </div>
-                <div id="inner2container">
+                <div class="inner2container">
                     
-                    <div id="leftnavmenu">
+                    <div class="leftnavmenu">
                         
                     </div>
                     
-                    <div id="seperator"></div>   
+                    <div class="seperator"></div>   
                     
-                    <div id="showcontent">
-                        <div id="showcontenttop"></div>        
-                            <div id="showcontenttoplabel">
-                                    TASKS
+                    <div class="showcontent">
+                        <div class="showcontenttop"></div>        
+                            <div class="showcontenttoplabel">
+                                    
                             </div>
                         
-                            <div id="showcontenttopsearch">
-                                <input id="something" type="text">                                
+                            <div class="showcontenttopsearch">
+                                <input class="" type="text">                                
                             </div>
                         
-                        <div id="showcontentdetails">
-                            <div id="showcontentdetailsinner">
+                        <div class="showcontentdetails">
+                            <div class="showcontentdetailsinner">
                                 
-                                <div id="showcontentdetailsinnertile">
-                                    <!--<input id="showcontentdetailsinnertilecheckbox" type="checkbox">-->
-                                    <!--<div id="showcontentdetailsinnertilename"><span></span></div>-->
+                                <div class="showcontentdetailsinnertile">
+                                    <input class="showcontentdetailsinnertilecheckbox" type="checkbox">
+                                    <div class="showcontentdetailsinnertilename"><span>Commodo Dragon</span></div>
+                                     <div class="showcontentdetailsinnertiletitle"><span></span>Malaria Research</div>
+                                      <div class="showcontentdetailsinnertiledescription"><span>Africa needs to discover new frontiers in the course of fighting poverty amongst her people.  Ghana, the gateway to Africa, must lead the way, and education of these street and vulnerable children is the key.</span></div>
                                  </div>
                                
                             </div>                            
@@ -82,10 +94,15 @@ and open the template in the editor.
                         
                     </div>
                     
-                    <div id="seperator2"></div>
+                    <div class="seperator2"></div>
                     
-                    <div id="showpreview">
-                        
+                    <div class="showpreview">
+                        <div class="showpreviewinner">
+                            <div class="showpreviewinnerbuttons">
+                                <button class="newtaskbutton" type="button"><span class="fa-2x fa-android"></span></button>
+                                <button class="deletetaskbutton" type="button"><span class="fa-2x fa-android"></span></button>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
