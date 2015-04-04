@@ -62,6 +62,37 @@ and open the template in the editor.
                 return result;
            }//end of sendRequest(u)
            
+           
+           $(function ( )
+           {
+               $ ( ".delete" ).click ( function ( )
+               {
+                   //$('#load').fadeIn();
+                    var commentContainer = $ ( this ).parents ( ".showcontentdetailsinnertile" );
+                    var id = $ ( this ).attr ( "id" );
+                    console.log ( id );
+                    var string = 'cmd=2&task_id='+ id ;
+
+                    $.ajax ( 
+                            {
+                                
+                //                type: "POST",
+                                url: "../controllers/admin_controller.php",
+                                data: string,
+                                cache: false,
+                                success: function ( )
+                                {
+                                    commentContainer.slideUp ( 'fast', function ( ) 
+                                    { 
+                                        $ ( this ).remove ( ); 
+                                    } );
+                                 }
+
+                            });
+                            return false;
+                });
+            });
+           
            /**
             * 
             * @param {type} id
@@ -74,6 +105,7 @@ and open the template in the editor.
                 if ( obj.result === 1)
                 {
                        return $(".showpreviewinnercontentbody").text( obj.status );
+                       window.location.reload(true);
                 }
            }
            
@@ -174,9 +206,10 @@ and open the template in the editor.
                                 {
                                 echo "<div class='showcontentdetailsinnertile showcontentdetailsinnertile2' onclick='getPreview ({$row['task_id']})'>
                                         <input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2' value={$row['task_id']} name=todelete[] type='checkbox'>
-                                        <div class='showcontentdetailsinnertilename'><span>{$row['user_fname']} {$row['user_sname']}</span>
-                                          <div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' style='float:right; margin-right:40pz'>
-                                                <a style='padding: 7px' onclick='deleteTask ({$row['task_id']})'>X</a>
+                                        <div class='showcontentdetailsinnertilename'>
+                                        <span>{$row['user_fname']} {$row['user_sname']}</span>
+                                          <div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' style='float:right; margin-right:10px'>
+                                                <a class='delete' style='padding: 7px' id={$row['task_id']}>X</a>
                                             </div>
                                          </div>
                                          <div class='showcontentdetailsinnertiletitle'><span></span>{$row['task_title']}</div>
@@ -196,6 +229,7 @@ and open the template in the editor.
                             <div class="showpreviewinnerbuttons">
                                 <button class="newtaskbutton" onclick="loadadd ( )" type="button"><span>+</span></button>
                                 <button class="deletetaskbutton" type="button" onclick="deleteTask ( id )"><span>*</span></button>
+                                <button class="deletetaskbutton" type="button" onclick=""><span>U</span></button>
                             </div>
                             
                             <div class="showpreviewinnercontent">

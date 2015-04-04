@@ -74,7 +74,7 @@ function delete_task ( )
     
     $task_id = $_REQUEST [ 'task_id' ];
     $obj = new Admin ( );
-    echo ' { "result":1, "status": "Successfully deleted" }';
+    
     if ( $obj->admin_delete_task ( $task_id ) )
     {
         echo ' { "result":1, "status": "Successfully deleted" }';
@@ -91,20 +91,24 @@ function delete_task ( )
  */
 function add_task ( )
 {
-    include '../models/admin_class.php';
-    
-    $task_title = $_REQUEST [ 'task_title' ];
-    $task_description = $_REQUEST [ 'task_description' ];
-    $user_id = $_REQUEST [ 'user_id' ];
-    
-    $obj = new Admin ( );
-        
-    if ( $obj->admin_add_new_task ( $task_title, $task_description, $user_id ) )
+    if ( isset ( $_REQUEST [ 'task_title' ] ) && isset ( $_REQUEST [ 'task_description' ] ) 
+            && isset ( $_REQUEST [ 'user_id' ] ) )
     {
-        echo ' { "result":1, "status": "Successfully added a new task to the database" } ';
-    }
-    else
-    {
-         echo ' { "result":0, "status": "Failed to add a new task to the database" }';
+        include '../models/admin_class.php';
+
+        $task_title = $_REQUEST [ 'task_title' ];
+        $task_description = $_REQUEST [ 'task_description' ];
+        $user_id = $_REQUEST [ 'user_id' ];
+
+        $obj = new Admin ( );
+
+        if ( $obj->admin_add_new_task ( $task_title, $task_description, $user_id ) )
+        {
+            echo ' { "result":1, "status": "Successfully added a new task to the database" } ';
+        }
+        else
+        {
+             echo ' { "result":0, "status": "Failed to add a new task to the database" }';
+        }
     }
 }//end of add_task ( )

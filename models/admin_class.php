@@ -37,7 +37,7 @@ class Admin extends adb
        $display_query = "select task_id, task_description, task_title, user_fname, user_sname
                                 from system_tasks
                                 join system_users
-                                on system_tasks.user_id=system_users.user_id"; 
+                                on system_tasks.user_id=system_users.user_id order by task_id desc"; 
        if ( !$this->query ( $display_query ) )
        {
            echo 'error running query';
@@ -49,7 +49,7 @@ class Admin extends adb
     /**
      * Function to preview a selected id
      * @param type $task_id The id of task to be previewed
-     * @return type Description
+     * @return type Description Returning true or false
      */
     function admin_preview_task ( $task_id )
     {
@@ -88,8 +88,8 @@ class Admin extends adb
      */
     function admin_add_new_task ( $task_title, $task_description, $admin_id )
     {
-        $add_query = "insert into system_tasks ( task_title, task_description, user_id )"
-                . "values ( '$task_title', '$task_description', '$admin_id' );";
+        $add_query = "insert into `system_tasks` ( `task_title`, `task_description`, `user_id` )"
+                . "values ( '$task_title', '$task_description', '$admin_id' )";
         if ( !$this->query ( $add_query ) )
         {
             echo "error running admin add task query";
