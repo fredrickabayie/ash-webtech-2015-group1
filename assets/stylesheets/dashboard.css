@@ -7,12 +7,25 @@
 body{
     width: 100%;
     height: 100%;
-    background-color: #F5F5F5;
+    /*background-color: #F5F5F5;*/
     margin: 0px;
     padding: 0px;
     border: 0px;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
 /*    display: block;
     position: absolute;*/
+    background-color: #fff;
+    position: absolute!important;
+    scrollbar-base-color: #fff;
+    scrollbar-face-color: #c8c8c8;
+    scrollbar-shadow-color: #fff;
+    scrollbar-highlight-color: #fff;
+    scrollbar-3dlight-color: #fff;
+    scrollbar-darkshadow-color: #fff;
+    scrollbar-track-color: #fff;
+    scrollbar-arrow-color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
 }
 
 .maincontainer{
@@ -74,6 +87,48 @@ div{
     height: auto;
     width: 256px;
     /*width: 300px*/
+}
+
+.leftnavmenuinner{
+    background-color: thistle;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.leftnavmenuinnertop{
+    background-color: violet;
+    position: absolute;
+    top: 0;
+    height: 100px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.leftnavmenuinnerdown{
+    background-color: springgreen;
+    position: absolute;
+    top: 107px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.leftnavmenuinnerdownnav{
+    background-color: plum;
+    clear: both;
+    display: block;
+    top: 3px;
+    position: relative;
+    overflow: hidden;
 }
 
 .seperator{
@@ -138,6 +193,14 @@ div{
     width: auto;
 }
 
+.showcontenttopsearchfield{
+    padding-left: 5px;
+    margin-left: 50px;
+    margin-top: 3px;
+    width: 400px;
+    height: 22px;
+}
+
 .showcontentdetails{
     background-color: lightskyblue;
     position: absolute;
@@ -160,6 +223,31 @@ div{
     right: 0;
 }
 
+.showcontentdetailsinner::-webkit-scrollbar{
+    height: 18px;
+    width: 18px;
+}
+
+.showcontentdetailsinner::-webkit-scrollbar-thumb{
+    border-radius: 9px;
+border: solid 6px #fff;
+background-color: #c8c8c8;
+}
+
+.showcontentdetailsinner::-webkit-scrollbar-button{
+    background-color: #fff;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.showcontentdetailsinner::-webkit-scrollbar-track{
+    background-color: #fff;
+}
+
+.showcontentdetailsinner::-webkit-scrollbar-corner{
+    background-color: #fff;
+}
+
 .showcontentdetailsinnertile{
     background-color: olive;
     width: 556px;
@@ -169,8 +257,23 @@ div{
     outline: none;
 }
 
-.showcontentdetailsinnertile:hover{
-    background-color: red;
+/*:hover{
+    
+}*/
+
+.showcontentdetailsinnertile:hover .showcontentdetailsinnertilecheckbox{
+    /*background-color: red;*/
+    opacity: 1;
+    filter: alpha ( opacity = 1);
+}
+
+.showcontentdetailsinnertile:hover .showcontentdetailsinnertiledelete{
+     opacity: 1;
+    filter: alpha ( opacity = 1);
+}
+
+.showcontentdetailsinnertile2:hover{
+    background-color: black
 }
 
 .showcontentdetailsinnertilecheckbox{
@@ -182,8 +285,8 @@ div{
     cursor: pointer;
     border-width: 0;
     padding: 0;
-    /*opacity: 0;*/
-    /*filter: alpha(opacity=0);*/
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
 .showcontentdetailsinnertilename{
@@ -197,6 +300,19 @@ div{
     font-family: "wf_segoe-ui_semilight", "Segoe UI Semilight", "Segoe WP Semilight", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
     font-size: 17px;
     font-weight: normal;
+}
+
+.showcontentdetailsinnertiledelete{
+    /*background-color: blue;*/
+/*    width: 20px;
+    height: 20px;*/
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha ( opacity=0);
+}
+
+.showcontentdetailsinnertiledelete:hover{
+    background-color: violet
 }
 
 .showcontentdetailsinnertiletitle{
@@ -294,6 +410,7 @@ div{
 
 .showpreviewinnerbuttons{
     position: relative;
+    background-color: yellowgreen;
 }
 
 .newtaskbutton{
@@ -321,6 +438,71 @@ div{
 .deletetaskbutton:hover{
     background-color: yellow;
 }
+
+.showpreviewinnercontent{
+    position: relative;
+    background-color: purple;
+}
+
+.showpreviewinnercontentheader{
+    
+}
+
+.showpreviewinnercontentheaderimage{
+    float: left;
+    max-width: 71px;
+    margin: 4px 10px 0 0;
+    background-color: peru;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 0;
+    overflow: hidden;
+    vertical-align: top;
+    position: relative;
+    background-repeat: no-repeat;
+    white-space: nowrap;
+    display: table-cell;
+    width: 64px;
+    height: 64px;
+}
+
+.buttonsbuttons{
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding-left: 50px;
+    font-size: 17px;
+}
+
+.buttonsbuttons:hover{
+    background-color: sandybrown;
+    border-right: 10px solid black;
+}
+
+.buttonsbuttons:visited .buttonsbuttons:active{
+    background-color: sandybrown;
+    border-right: 10px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -7,18 +7,45 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
     switch ( $cmd )
     {
         case 1:
-            display_all_tasks ( );
+            task_preview ( );
             break;
         
         case 2:
+            delete_task ( );
+            break;
+        
+        case 3:
             add_task ( );
             break;
          
         default:
+            echo '{"result":0,message:"unknown command"}';
+            break;
     }//end of switch
     
 }//end of if
 
+
+
+/**
+ * Function to get preview of a task
+ */
+function task_preview ( )
+{
+     include '../models/admin_class.php';
+     
+     $obj=new Admin ( );
+     $task_id = $_REQUEST [ 'task_id' ];
+     $obj->admin_preview_task ( $task_id );
+
+     while ( $row = $obj->fetch ( ) )
+     {
+         echo '{"result":1, "task_title":"' .$row['task_title'].'",'
+                . '"user_fname":"' .$row['user_fname'].'",'
+                 . '"user_sname":"' .$row['user_sname'].'",'
+                . '"task_description":"' .$row['task_description'].'"}';
+     }
+}//end of task_preview()
 
 /**
  * Function to display all tasks
@@ -38,32 +65,25 @@ function display_all_tasks ( )
     {
         echo ' { "result":0, "status": "Failed to display" }';
     }
-//    while ( $row = $obj->admin_display_all_tasks ( ) )
-//    { 
-//        echo ' { "result": 1, "tasks": [ { "task_id": $row[task_id], "task_title": $row[task_title] } ] }';
-//    }//end of while
-    
 }//end of display_all_tasks()
 
 
-/**
- * Function to get preview of a task
- */
-function task_preview ( )
+function delete_task ( )
 {
-//     include 'tasks.php';
-     
-     $obj=new TASKS ( );
-     $id = $_REQUEST [ 'id' ];
-     $obj->select_a_task ( $id );
-
-     while ( $row = $obj->fetch ( ) )
-     {
-         echo '{"result":1, "title":"' .$row['task_title'].'",'
-                . '"name":"' .$row['nurse_name'].'",'
-                . '"description":"' .$row['task_description'].'"}';
-     }
-}//end of task_preview ( )
+    include '../models/admin_class.php';
+    
+    $task_id = $_REQUEST [ 'task_id' ];
+    $obj = new Admin ( );
+    echo ' { "result":1, "status": "Successfully deleted" }';
+    if ( $obj->admin_delete_task ( $task_id ) )
+    {
+        echo ' { "result":1, "status": "Successfully deleted" }';
+    }
+    else
+    {
+        echo ' { "result":0, "status": "Failed to delete" }';
+    }
+}//end of delete_task ( )
 
 
 /**
@@ -71,17 +91,15 @@ function task_preview ( )
  */
 function add_task ( )
 {
-//    include 'tasks.php';
+    include '../models/admin_class.php';
     
     $task_title = $_REQUEST [ 'task_title' ];
     $task_description = $_REQUEST [ 'task_description' ];
-    $task_start_date = $_REQUEST [ 'task_start_date' ];
-    $task_end_date = $_REQUEST [ 'task_end_date' ];
-    $nurse_id = $_REQUEST [ 'nurse_id' ];
+    $user_id = $_REQUEST [ 'user_id' ];
     
-    $obj = new TASKS ( );
+    $obj = new Admin ( );
         
-    if ( $obj->add_new_task ( $task_title, $task_description, $task_start_date, $task_end_date, $nurse_id ) )
+    if ( $obj->admin_add_new_task ( $task_title, $task_description, $user_id ) )
     {
         echo ' { "result":1, "status": "Successfully added a new task to the database" } ';
     }

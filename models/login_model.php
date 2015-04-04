@@ -34,8 +34,8 @@ class Login extends adb
      */
     function user_login ( $username, $password )
     {
-       $login_query = "select system_users.user_id, system_users.user_type, system_users.username "
-               . "from system_users"
+       $login_query = "select system_login.user_id, system_login.user_type, system_login.username "
+               . "from system_login"
                . " where username='$username' and password=MD5('$password') limit 1";
        if ( !$this->query ( $login_query ) )
        {
