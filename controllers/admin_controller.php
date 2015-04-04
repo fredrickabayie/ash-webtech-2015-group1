@@ -28,7 +28,7 @@ function display_all_tasks ( )
     include '../models/admin_class.php';
     $obj = new Admin ( );
         
-    if ( $row = $obj->admin_display_all_tasks())
+    if ( $row = $obj->admin_display_all_tasks ( ) )
     {
     echo '{"result":1, "id":"' .$row['task_id'].'",'
                 . '"title":"' .$row['task_title'].'",'

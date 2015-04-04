@@ -19,29 +19,24 @@ and open the template in the editor.
         <link href="../assets/stylesheets/dashboard.css" rel="stylesheet" type="text/css">
         
         <!-- jQuery --> 
-        <script src="../assets/javascripts/jquery-2.1.3.js" type="text/javascript"></script>
+        <script src="../assets/javascripts/jquery-2.1.3.js"></script>
         
         <!--font awesome-->
         <link rel="stylesheet" href="../assets/stylesheets/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="../assets/stylesheets/font-awesome.css" type="text/css">
         
-        <script type="text/javascript">
-            display ( );
+        <script>
                 //function to get description of task
             function display ( )
             {
                 var theUrl="../controllers/admin_controller.php?cmd=1";
                 var obj = sendRequest ( theUrl );		
-                if ( obj.result===1)
+                if ( obj.result === 1)
                 {
-                        $("#header").text(obj.title);
+                        $("#header").text("sjhbfjkbhsdkfjbgskjdhbgfjsbhdkgjhsdbkfhsbdkfjhgsbkdjf");
                         console.log(obj.id);
                         console.log(obj.title);
                         console.log(obj.description);
-                }
-                else
-                {
-//                     $("#header").text(obj.status);
                 }
             }
 
@@ -81,14 +76,21 @@ and open the template in the editor.
                         
                         <div class="showcontentdetails">
                             <div class="showcontentdetailsinner">
+                                <?php
+                                include '../models/admin_class.php';
+                                $obj = new Admin ( );
+                                $obj->admin_display_all_tasks ( );
                                 
-                                <div class="showcontentdetailsinnertile">
-                                    <input class="showcontentdetailsinnertilecheckbox" type="checkbox">
-                                    <div class="showcontentdetailsinnertilename"><span>Commodo Dragon</span></div>
-                                     <div class="showcontentdetailsinnertiletitle"><span></span>Malaria Research</div>
-                                      <div class="showcontentdetailsinnertiledescription"><span>Africa needs to discover new frontiers in the course of fighting poverty amongst her people.  Ghana, the gateway to Africa, must lead the way, and education of these street and vulnerable children is the key.</span></div>
-                                 </div>
-                               
+                                while ( $row = $obj->fetch ( )  )
+                                {
+                                echo'<div class="showcontentdetailsinnertile">
+                                        <input class="showcontentdetailsinnertilecheckbox" type="checkbox">
+                                        <div class="showcontentdetailsinnertilename"><span>'.$row['user_fname'].' '.$row['user_sname'].'</span></div>
+                                         <div class="showcontentdetailsinnertiletitle"><span></span>'.$row['task_title'].'</div>
+                                          <div class="showcontentdetailsinnertiledescription"><span>'.$row['task_description'].'</span></div>
+                                        </div>';
+                                }
+                               ?>
                             </div>                            
                         </div>
                         
