@@ -382,8 +382,37 @@ cursor: pointer;
     width: auto;
 }
 
-.showpreviewinner{
+.showpreview2{
     background-color: darkorange;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+/*    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: auto;
+    width: auto;
+    overflow: auto;*/
+    display: block;
+/*    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 0 0 32px;
+    padding: 18px 20px 0 0;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor: auto;*/
+}
+
+.showpreviewinner{
+    background-color: saddlebrown;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -400,33 +429,42 @@ cursor: pointer;
     margin: 0 0 0 32px;
     padding: 18px 20px 0 0;
     -webkit-user-select: text;
-    -khtml-user-select: text;
-    -moz-user-select: text;
-    -o-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
     cursor: auto;
 }
+
+.showpreviewinner2{
+    display: block;
+}
+
+.showpreviewinner2upper{
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0 30px 9px 0;
+    word-wrap: break-word;
+}
+
+
 
 .showpreviewinnerbuttons{
     position: relative;
     background-color: yellowgreen;
 }
 
-.newtaskbutton{
+/*.newtaskbutton{
     border: 0px;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     background-color: beige;
     cursor: pointer;
-}
+}*/
 
-.newtaskbutton:hover{
+/*.newtaskbutton:hover{
     background-color: yellow;
-}
+}*/
 
-.deletetaskbutton{
+/*.deletetaskbutton{
     border: 0px;
     border-radius: 50%;
     width: 40px;
@@ -437,15 +475,101 @@ cursor: pointer;
 
 .deletetaskbutton:hover{
     background-color: yellow;
-}
+}*/
 
 .showpreviewinnercontent{
-    position: relative;
     background-color: purple;
+    min-height: 70px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 30px;
+    position: relative;
+    border-color: #eaeaea;
+    min-width: 350px;
+    clear: both;
+    display: block;
 }
 
 .showpreviewinnercontentheader{
-    
+    background-color: magenta;
+    min-height: 70px;
+    min-width: 200px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.showpreviewinnercontentheaderinner{
+    background-color: tan;
+    padding-top: 32px;
+    outline: none;
+}
+
+.showpreviewinnercontentheaderinnerbuttons{
+    background-color: orangered;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.newtaskbutton{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 0;
+    /*padding: 0;*/
+    cursor: pointer!important;
+}
+
+.deletetaskbutton{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 0;
+    /*padding: 0;*/
+    cursor: pointer!important;
+}
+
+.updatetaskbutton{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 0;
+    /*padding: 0;*/
+    cursor: pointer!important;
+}
+
+.previewcontentheaderbody{
+    background-color: yellowgreen;
+    display: block;
+}
+
+.previewcontentheaderbodybutton{
+    float: right;
+    margin-left: 10px;
+    margin-top: 4px;
+    background: transparent;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer!important;
+    font-size: 14px;
 }
 
 .showpreviewinnercontentheaderimage{
@@ -466,6 +590,46 @@ cursor: pointer;
     height: 64px;
 }
 
+.previewcontentheaderbodynamecontainer{
+    background-color: goldenrod;
+    padding: 5px 0 0 0;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.previewcontentheaderbodyname{
+    white-space: nowrap;
+    display: inline-block;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    color: #333;
+}
+
+.previewcontentheaderbodydate{
+    background-color: dimgrey;
+    margin-top: -2px;
+    color: #333;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.previewcontentheaderbodytitle{
+    background-color: wheat;
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+}
+
+.previewcontentheaderbodydescription{
+    background-color: lime;
+    margin-top: 25px;
+    float: left;
+    width: 100%;
+}
 .buttonsbuttons{
     margin: 0px;
     border: 0px;

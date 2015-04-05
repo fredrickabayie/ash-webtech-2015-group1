@@ -37,8 +37,8 @@ and open the template in the editor.
         <script src="../assets/javascripts/jquery-2.1.3.js"></script>
         
         <!--font awesome-->
-        <link rel="stylesheet" href="../assets/stylesheets/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="../assets/stylesheets/font-awesome.css" type="text/css">
+        <link rel="stylesheet" href="../assets/font-awesome-4.3.0/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/font-awesome-4.3.0/css/font-awesome.css" type="text/css">
         
         <script>
                 //function to get description of task
@@ -48,10 +48,13 @@ and open the template in the editor.
                 var obj = sendRequest ( theUrl );		
                 if ( obj.result === 1)
                 {
-                       return $(".showpreviewinnercontentbody").text( obj.task_title);
-                        console.log(obj.id);
-                        console.log(obj.title);
-                        console.log(obj.description);
+                        $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname).slideToggle('fast').slideDown('fast');
+                        $(".previewcontentheaderbodytitle2").text ( obj.task_title ).slideToggle('fast').slideDown('fast');
+                         $(".previewcontentheaderbodydescription2").text ( obj.task_description ).slideToggle('fast').slideDown('fast');
+                        
+//                        console.log(obj.task_id);
+                        console.log(obj.task_title);
+                        console.log(obj.task_description);
                 }
             }
 
@@ -187,7 +190,7 @@ and open the template in the editor.
                     <div class="showcontent">
                         <div class="showcontenttop"></div>        
                             <div class="showcontenttoplabel">
-                                    
+                                    Tasks
                             </div>
                         
                             <div class="showcontenttopsearch">
@@ -225,14 +228,71 @@ and open the template in the editor.
                     <div class="seperator2"></div>
                     
                     <div class="showpreview">
-                        <div class="showpreviewinner">
-                            <div class="showpreviewinnerbuttons">
+                        <div class="showpreview2">
+                            <div class="showpreviewinner">
+                                <div class="showpreviewinner2">
+                                    <div class="showpreviewinner2upper">
+                                        <!--<span>Just Something will go here</span>-->
+                                    </div>
+                                    
+                                    <div class="showpreviewinnercontent">
+                                        <div class="showpreviewinnercontentheader">
+                                            <div class="showpreviewinnercontentheaderinner">
+                                                <div class="showpreviewinnercontentheaderinnerbuttons">
+                                                    <button class="newtaskbutton" type="button">
+                                                        <span style="padding-bottom: 7px; padding-top: 7px">
+                                                            <i class="fa fa-2x fa-plus"></i>
+                                                        </span>
+                                                    </button>
+                                                    <button class="deletetaskbutton" type="button">
+                                                        <span style="padding-bottom: 7px; padding-top: 7px">
+                                                            <i class="fa fa-2x fa-trash"></i>
+                                                        </span>
+                                                    </button>
+                                                    <button class="updatetaskbutton" type="button">
+                                                        <span style="padding-bottom: 7px; padding-top: 7px">
+                                                            <i class="fa fa-2x fa-pencil"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                
+                                                <div class="previewcontentheaderbody">
+                                                    <button class="previewcontentheaderbodybutton">
+                                                        <span>Somebutton</span>
+                                                    </button>
+                                                    <div class="showpreviewinnercontentheaderimage">
+                                        
+                                                     </div>
+                                                    <div class="previewcontentheaderbodynamecontainer">
+                                                        <div class="previewcontentheaderbodyname">
+                                                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2">Fredrick Abayie</span>
+                                                        </div>
+                                                        <div class="previewcontentheaderbodydate">
+                                                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2">Sat 04/04/2015 10:50pm</span>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="previewcontentheaderbodytitle">
+                                            <span class="previewcontentheaderbodytitle2">Diseases In Africa</span>
+                                       </div>
+                                        
+                                        <div class="previewcontentheaderbodydescription">
+                                            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2">Description</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+<!--                            <div class="showpreviewinnerbuttons">
                                 <button class="newtaskbutton" onclick="loadadd ( )" type="button"><span>+</span></button>
                                 <button class="deletetaskbutton" type="button" onclick="deleteTask ( id )"><span>*</span></button>
                                 <button class="deletetaskbutton" type="button" onclick=""><span>U</span></button>
-                            </div>
+                            </div>-->
                             
-                            <div class="showpreviewinnercontent">
+<!--                            <div class="showpreviewinnercontent">
                                 <div class="showpreviewinnercontentheader">
                                     <div class="showpreviewinnercontentheaderimage">
                                         
@@ -244,7 +304,7 @@ and open the template in the editor.
                                     <?php include '../views/add_task.php'; ?>
                                 </div>
                                 
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     
