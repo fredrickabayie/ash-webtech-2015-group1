@@ -69,6 +69,8 @@ and open the template in the editor.
                         $ ( this ).show ( );
                         $(".previewcontentheaderbodydescription2").text ( obj.task_description );
                     });
+                    
+                    $ ( ".showpreviewinner2upper").text ( obj.task_id );
                                             
                         console.log(obj.task_title);
                         console.log(obj.task_description);
@@ -146,6 +148,28 @@ and open the template in the editor.
             });
            
            /**
+            * Function to process the edit button
+            * @returns {Boolean}
+            */
+           function get_edit_val ( )
+           {
+//           $ ( function ( ) 
+//           {
+//               $ ( ".updatetaskbutton" ).click ( function ( ) 
+//               {
+                   var task_id = $ ( ".showpreviewinner2upper" ).text();
+                   var task_title = $ ( ".previewcontentheaderbodytitle2" ).text();
+                   var task_description = $ ( ".previewcontentheaderbodydescription2" ).text();
+                   
+                   $ ( ".showupdatepanel").show ( );
+                   $ ( "#update_task_id" ).attr( "value", task_id );
+                   $ ( "#update_task_title" ).attr( "value", task_title );
+                   $ ( "#update_task_description" ).attr( "value", task_description );            
+               }
+//               });
+//           });
+           
+           /**
             * 
             * @param {type} id
             * @returns {undefined}
@@ -184,6 +208,34 @@ and open the template in the editor.
                     return false;                    
                 }
         }
+        
+        
+                 //function to add a new task
+        function editTask ( )
+        {
+//            var task_title = encodeURI(document.getElementById("task_title").value);
+//            var task_description = encodeURI(document.getElementById("task_description").value);
+//            var task_id = encodeURI(document.getElementById("task_id").value);
+                var update_task_id = document.getElementById("update_task_id").value;
+                var update_task_title = document.getElementById("update_task_title").value;
+                var update_task_description = document.getElementById("update_task_description").value;
+                                
+                var url = "../controllers/admin_controller.php?cmd=4&update_task_title="+update_task_title+
+                        "&update_task_description="+update_task_description+"&update_task_id="+update_task_id;
+                
+                var obj = sendRequest ( url );
+                
+                if ( obj.status === 1)
+                {
+//                     $("#divStatus").text(obj.status);
+                }
+                else
+                {
+//                    $("#divStatus").text(obj.status);
+//                     $("#divStatus").css("backgroundColor", "red");
+                    return false;                    
+                }
+        }                   
                    
         </script>
         
@@ -289,7 +341,7 @@ and open the template in the editor.
                                                         </span>
                                                     </button>
                                                     <button class="updatetaskbutton" type="button">
-                                                        <span style="padding-bottom: 7px; padding-top: 7px">
+                                                        <span onclick="get_edit_val ( )" style="padding-bottom: 7px; padding-top: 7px">
                                                             <i class="fa fa-2x fa-pencil"></i>
                                                         </span>
                                                     </button>
@@ -297,6 +349,7 @@ and open the template in the editor.
                                                 
                                                 <div class="previewcontentheaderbody">
                                                     <?php include '../views/add_task.php'; ?>
+                                                    <?php include '../views/update_task.php'; ?>
                                                     <button class="previewcontentheaderbodybutton">
                                                         <span>Somebutton</span>
                                                     </button>

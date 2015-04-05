@@ -17,6 +17,10 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 3:
             add_task ( );
             break;
+        
+        case 4:
+            update_task ( );
+            break;
          
         default:
             echo '{"result":0,message:"unknown command"}';
@@ -32,19 +36,24 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
  */
 function task_preview ( )
 {
-     include '../models/admin_class.php';
-     
-     $obj=new Admin ( );
-     $task_id = $_REQUEST [ 'task_id' ];
-     $obj->admin_preview_task ( $task_id );
+    if ( isset ( $_REQUEST [ 'task_id' ] ) )
+    {
+        include '../models/admin_class.php';
+        
+        $task_id = $_REQUEST [ 'task_id' ];
+        
+        $obj=new Admin ( );         
+        $obj->admin_preview_task ( $task_id );
 
-     while ( $row = $obj->fetch ( ) )
-     {
-         echo '{"result":1, "task_title":"' .$row['task_title'].'",'
-                . '"user_fname":"' .$row['user_fname'].'",'
-                 . '"user_sname":"' .$row['user_sname'].'",'
-                . '"task_description":"' .$row['task_description'].'"}';
-     }
+        while ( $row = $obj->fetch ( ) )
+        {
+            echo '{"result":1, "task_title":"' .$row['task_title'].'",'
+                    . '"task_id":"' .$row['task_id'].'",'
+                   . '"user_fname":"' .$row['user_fname'].'",'
+                    . '"user_sname":"' .$row['user_sname'].'",'
+                   . '"task_description":"' .$row['task_description'].'"}';
+        }
+    }
 }//end of task_preview()
 
 /**
@@ -70,18 +79,21 @@ function display_all_tasks ( )
 
 function delete_task ( )
 {
-    include '../models/admin_class.php';
-    
-    $task_id = $_REQUEST [ 'task_id' ];
-    $obj = new Admin ( );
-    
-    if ( $obj->admin_delete_task ( $task_id ) )
+    if ( isset ( $_REQUEST [ 'task_id' ] ) )
     {
-        echo ' { "result":1, "status": "Successfully deleted" }';
-    }
-    else
-    {
-        echo ' { "result":0, "status": "Failed to delete" }';
+        include '../models/admin_class.php';
+
+        $task_id = $_REQUEST [ 'task_id' ];
+        $obj = new Admin ( );
+
+        if ( $obj->admin_delete_task ( $task_id ) )
+        {
+            echo ' { "result":1, "status": "Successfully deleted" }';
+        }
+        else
+        {
+            echo ' { "result":0, "status": "Failed to delete" }';
+        }
     }
 }//end of delete_task ( )
 
@@ -112,3 +124,31 @@ function add_task ( )
         }
     }
 }//end of add_task ( )
+
+
+/**
+ * Fucntion to update a task
+ */
+function update_task ( )
+{
+    if ( isset ( $_REQUEST [ 'update_task_id' ] ) && isset ( $_REQUEST [ 'update_task_description' ] )
+            && isset ( $_REQUEST [ 'update_task_title' ] ) )
+    {
+        include '../models/admin_class.php';
+        
+        $task_title = $_REQUEST [ 'update_task_title' ];
+        $task_description = $_REQUEST [ 'update_task_description' ];
+        $task_id = $_REQUEST [ 'update_task_id' ];
+        
+        $obj = new Admin ( );
+        
+         if ( $obj->admin_update_task ( $task_id, $task_title, $task_description ) )
+        {
+            echo ' { "result":1, "status": "Successfully updated task" } ';
+        }
+        else
+        {
+             echo ' { "result":0, "status": "Failed to update task" }';
+        }        
+    }
+}//end of update_task ( )

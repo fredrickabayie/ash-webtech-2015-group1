@@ -34,7 +34,7 @@
     /*box-shadow: 0px 2px 0px 0px #3293ba;*/
 }
 
-.task_title
+.update_task_id
 {
     padding-left: 15px;
     padding-right: 15px;
@@ -49,7 +49,22 @@
     border-style: none;*/
 }
 
-.task_description
+.update_task_title
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;;
+    font-size: 15px;
+    border: 1px solid black;
+    /*width: 370px;*/
+    width: 100%;
+    height: 35px;
+    border-radius: 3px;
+/*     box-shadow: none;
+    border-style: none;*/
+}
+
+.update_task_description
 {
     padding-left: 2px;
     padding-right: 2px;
@@ -65,30 +80,23 @@
 }
         </style>
         
-        <?php
-            session_start();
-            if ( isset ( $_SESSION [ 'user_type' ] ) )
-            {
-                $user_type = $_SESSION [ 'user_type' ];
-                echo $user_type;
-            }
-        ?>
+     
         
         
         
-        
-        
-        
-        <div id="showupdatepanel" style="">
+        <div class="showupdatepanel" style="display: none">
         <div>
-            <input class="task_title" id="task_title" name="task_title" type="text" placeholder="task title">
+        <input class="update_task_id" id="update_task_id" name="update_task_id" type="text" placeholder="task id">
         </div><br> 
         <div>
-            <textarea class="task_description" id="task_description" name="task_description" type="text" placeholder="task description" required="">
+            <input class="update_task_title" id="update_task_title" name="update_task_title" type="text" placeholder="task title">
+        </div><br> 
+        <div>
+            <textarea class="update_task_description" id="update_task_description" name="update_task_description" type="text" placeholder="task description" required="">
             </textarea>
         </div><br>
         <div>
-            <button class="update_button" id="update_button" type="button" name="add_button" onclick="insertTask ( )">Update</button>
+            <button class="update_button" id="update_button" type="button" name="add_button" onclick="editTask ( )">Update</button>
         </div><br>
         </div>
 </body>
