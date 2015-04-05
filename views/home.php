@@ -48,16 +48,34 @@ and open the template in the editor.
                 var obj = sendRequest ( theUrl );		
                 if ( obj.result === 1)
                 {
-                        $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname).slideToggle('fast').slideDown('fast');
-                        $(".previewcontentheaderbodytitle2").text ( obj.task_title ).slideToggle('fast').slideDown('fast');
-                         $(".previewcontentheaderbodydescription2").text ( obj.task_description ).slideToggle('fast').slideDown('fast');
-                        
-//                        console.log(obj.task_id);
+                     $("#showaddpanel").slideUp ( 'slow', function ()
+                    {
+                       $ ( this ).hide ( );
+//                       $ ( ".previewcontentheaderbody" ).show();
+                    });
+                    
+                    $ ( ".previewcontentheaderbody" ).fadeIn ( 'slow', function ()
+                    {
+                        $ ( this ).show ( );
+                         $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname);
+                    });
+                    $ ( ".previewcontentheaderbodytitle" ).fadeIn ( 'slow', function ()
+                    {
+                        $ ( this ).show  ( );
+                        $(".previewcontentheaderbodytitle2").text ( obj.task_title );
+                    });
+                    $ ( ".previewcontentheaderbodydescription" ).fadeIn ( 'slow', function ()
+                    {
+                        $ ( this ).show ( );
+                        $(".previewcontentheaderbodydescription2").text ( obj.task_description );
+                    });
+                                            
                         console.log(obj.task_title);
                         console.log(obj.task_description);
                 }
             }
 
+            //function to send an ajax request
             function sendRequest ( u )
            {
                var obj = $.ajax({url:u,async:false});
@@ -66,33 +84,64 @@ and open the template in the editor.
            }//end of sendRequest(u)
            
            
+           //function to remove a tile
            $(function ( )
            {
                $ ( ".delete" ).click ( function ( )
                {
-                   //$('#load').fadeIn();
+                 
                     var commentContainer = $ ( this ).parents ( ".showcontentdetailsinnertile" );
+                    var icondelete = $ ( this ).children ( "#deleteicon" );
                     var id = $ ( this ).attr ( "id" );
                     console.log ( id );
                     var string = 'cmd=2&task_id='+ id ;
 
                     $.ajax ( 
                             {
-                                
                 //                type: "POST",
                                 url: "../controllers/admin_controller.php",
                                 data: string,
                                 cache: false,
                                 success: function ( )
                                 {
-                                    commentContainer.slideUp ( 'fast', function ( ) 
-                                    { 
-                                        $ ( this ).remove ( ); 
+                                    icondelete.attr ( "class", "fa fa-spin fa-trash" );
+                                    commentContainer.slideUp ( 'slow', function ( ) 
+                                    {
+                                        $ ( this ).remove ( );
                                     } );
                                  }
 
                             });
                             return false;
+                });
+            });
+            
+            
+            //function to call the add task
+            $ ( function ( )
+            {
+                $ ( ".newtaskbutton" ).click ( function ( )
+                {
+                    $ ( ".previewcontentheaderbody" ).fadeOut ( 'slow', function ()
+                    {
+                        $ ( this ).hide ( );
+                    });
+                    $ ( ".previewcontentheaderbodytitle" ).fadeOut ( 'slow', function ()
+                    {
+                        $ ( this ).hide  ( );
+                    });
+                    $ ( ".previewcontentheaderbodydescription" ).fadeOut ( 'slow', function ()
+                    {
+                        $ ( this ).hide ( );
+                    });
+                    
+                    $("#showaddpanel").fadeIn ( 'slow', function ()
+                    {
+                         $ ( ".previewcontentheaderbody" ).show();
+                       $ ( this ).show ( ).slideDown();
+                      
+                    });
+//                    $ ( ".previewcontentheaderbody" ).show();
                 });
             });
            
@@ -140,17 +189,7 @@ and open the template in the editor.
         
     </head>
     <body>
-        <script>
-            
-            function loadadd ( )
-            {
-//                $("#addpopup").fadeToggle();
-                $("#showaddpanel").show();
-                
-                console.log("in load add");
-            }
-            
-        </script>
+        
         <div class="maincontainer">
             <div class="innercontainer">
                 <div class="header" id="header">
@@ -212,7 +251,7 @@ and open the template in the editor.
                                         <div class='showcontentdetailsinnertilename'>
                                         <span>{$row['user_fname']} {$row['user_sname']}</span>
                                           <div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' style='float:right; margin-right:10px'>
-                                                <a class='delete' style='padding: 7px' id={$row['task_id']}>X</a>
+                                                <a class='delete' style='padding: 7px' id={$row['task_id']}><i id='deleteicon' class='fa fa-trash'></i></a>
                                             </div>
                                          </div>
                                          <div class='showcontentdetailsinnertiletitle'><span></span>{$row['task_title']}</div>
@@ -239,12 +278,12 @@ and open the template in the editor.
                                         <div class="showpreviewinnercontentheader">
                                             <div class="showpreviewinnercontentheaderinner">
                                                 <div class="showpreviewinnercontentheaderinnerbuttons">
-                                                    <button class="newtaskbutton" type="button">
+                                                    <button id="newtaskbutton" class="newtaskbutton" type="button">
                                                         <span style="padding-bottom: 7px; padding-top: 7px">
                                                             <i class="fa fa-2x fa-plus"></i>
                                                         </span>
                                                     </button>
-                                                    <button class="deletetaskbutton" type="button">
+                                                    <button id="deletetaskbutton" class="deletetaskbutton" type="button">
                                                         <span style="padding-bottom: 7px; padding-top: 7px">
                                                             <i class="fa fa-2x fa-trash"></i>
                                                         </span>
@@ -257,6 +296,7 @@ and open the template in the editor.
                                                 </div>
                                                 
                                                 <div class="previewcontentheaderbody">
+                                                    <?php include '../views/add_task.php'; ?>
                                                     <button class="previewcontentheaderbodybutton">
                                                         <span>Somebutton</span>
                                                     </button>
@@ -286,28 +326,8 @@ and open the template in the editor.
                                 </div>
                                 
                             </div>
-<!--                            <div class="showpreviewinnerbuttons">
-                                <button class="newtaskbutton" onclick="loadadd ( )" type="button"><span>+</span></button>
-                                <button class="deletetaskbutton" type="button" onclick="deleteTask ( id )"><span>*</span></button>
-                                <button class="deletetaskbutton" type="button" onclick=""><span>U</span></button>
-                            </div>-->
-                            
-<!--                            <div class="showpreviewinnercontent">
-                                <div class="showpreviewinnercontentheader">
-                                    <div class="showpreviewinnercontentheaderimage">
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div class="showpreviewinnercontentbody">
-                                    <?php include '../views/add_task.php'; ?>
-                                </div>
-                                
-                            </div>-->
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
