@@ -86,13 +86,13 @@
         
         <div class="showupdatepanel" style="display: none">
         <div>
-        <input class="update_task_id" id="update_task_id" name="update_task_id" type="text" placeholder="task id">
+            <input style="display: none" class="update_task_id" id="update_task_id" name="update_task_id" type="text" placeholder="task id">
         </div><br> 
         <div>
             <input class="update_task_title" id="update_task_title" name="update_task_title" type="text" placeholder="task title">
         </div><br> 
         <div>
-            <textarea class="update_task_description" id="update_task_description" name="update_task_description" type="text" placeholder="task description" required="">
+            <textarea class="update_task_description"  id="update_task_description" name="update_task_description" type="text" placeholder="task description" required="">
             </textarea>
         </div><br>
         <div>

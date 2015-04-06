@@ -41,6 +41,50 @@ and open the template in the editor.
         <link rel="stylesheet" href="../assets/font-awesome-4.3.0/css/font-awesome.css" type="text/css">
         
         <script>
+            
+//            Function to load the list of task
+            $ ( document ).ready ( function ( )
+            {
+               var url = "../controllers/admin_controller.php?cmd=5";
+               var obj = sendRequest ( url );
+
+                if ( obj.result === 1 )
+                {
+                    var index = 0;
+                    var div = "";
+                    for ( ; index < obj.tasks.length; index++ )
+                    {
+                        div += "<div class='showcontentdetailsinnertile showcontentdetailsinnertile2'\n\
+                                    onclick='getPreview ( "+ obj.tasks [index].task_id+" )'>";   
+                        div += "<input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2'\n\
+                                    value="+ obj.tasks [index].task_id+" name=todelete[] type='checkbox'>";
+                        div += "<div class='showcontentdetailsinnertilename'>";
+                        div += "<span>"+obj.tasks [index].user_fname+""+obj.tasks [index].user_sname+"</span>";
+                        div += "<div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' \n\
+                                    style='float:right; margin-right:10px'>";
+                        div += "<a class='delete' style='padding: 7px' id="+ obj.tasks [index].task_id+"><i id='deleteicon' \n\
+                                    class='fa fa-trash-o'></i></a>";
+                        div += "</div>";
+                        div += "</div>";
+                        div += "<div class='showcontentdetailsinnertiletitle'>\n\
+                                    <span>"+obj.tasks [index].task_title+"</span></div>";
+                        div += "<div class='showcontentdetailsinnertiledescription'>\n\
+                                    <span>"+obj.tasks [index].task_description+"</span></div>";
+                        div += "</div>";
+                    }
+                    $ ( ".showcontentdetailsinnertile" ).slideUp ( 'slow' );
+                    $ ( ".showcontentdetailsinner" ).html ( div );
+                    
+//                     $ ( "#divStatus" ).text ( "Found " + obj.products.length + " results" );
+                }
+                else
+                {
+//                        $ ( "#divStatus" ).text ( obj.message );
+//                        $ ( "#divStatus" ).css ( "backgroundColor", "red" );
+                }
+            });
+            
+            
                 //function to get description of task
             function getPreview ( id )
             {
@@ -106,7 +150,7 @@ and open the template in the editor.
                                 cache: false,
                                 success: function ( )
                                 {
-                                    icondelete.attr ( "class", "fa fa-spin fa-trash" );
+                                    icondelete.attr ( "class", "fa fa-spin fa-trash-o" );
                                     commentContainer.slideUp ( 'slow', function ( ) 
                                     {
                                         $ ( this ).remove ( );
@@ -124,6 +168,7 @@ and open the template in the editor.
             {
                 $ ( ".newtaskbutton" ).click ( function ( )
                 {
+                    $ ( "#newtaskicon").attr( "class", "fa fa-2x fa-spin fa-plus" );
                     $ ( ".previewcontentheaderbody" ).fadeOut ( 'slow', function ()
                     {
                         $ ( this ).hide ( );
@@ -141,7 +186,7 @@ and open the template in the editor.
                     {
                          $ ( ".previewcontentheaderbody" ).show();
                        $ ( this ).show ( ).slideDown();
-                      
+                       $ ( "#newtaskicon").attr( "class", "fa fa-2x fa-plus" );
                     });
 //                    $ ( ".previewcontentheaderbody" ).show();
                 });
@@ -213,9 +258,6 @@ and open the template in the editor.
                  //function to add a new task
         function editTask ( )
         {
-//            var task_title = encodeURI(document.getElementById("task_title").value);
-//            var task_description = encodeURI(document.getElementById("task_description").value);
-//            var task_id = encodeURI(document.getElementById("task_id").value);
                 var update_task_id = document.getElementById("update_task_id").value;
                 var update_task_title = document.getElementById("update_task_title").value;
                 var update_task_description = document.getElementById("update_task_description").value;
@@ -270,8 +312,12 @@ and open the template in the editor.
                                         <button class="buttonsbuttons">Departments</button>
                                     </div>
                                 </div>
+                            </div>
+                            
+                            <div class="leftnavmenuinnernotification">
                                 
                             </div>
+                            
                         </div>
                         
                     </div>
@@ -290,27 +336,27 @@ and open the template in the editor.
                         
                         <div class="showcontentdetails">
                             <div class="showcontentdetailsinner">
-                                <?php
                                 
-                                include '../models/admin_class.php';
+                                
+<!--                                include '../models/admin_class.php';
                                 $obj = new Admin ( ); 
                                 $obj->admin_display_all_tasks ( );
                                 
                                 while ( $row = $obj->fetch ( )  )
-                                {
-                                echo "<div class='showcontentdetailsinnertile showcontentdetailsinnertile2' onclick='getPreview ({$row['task_id']})'>
+                                {-->
+<!--                                    <div class='showcontentdetailsinnertile showcontentdetailsinnertile2' onclick="getPreview ({$row['task_id']})">
                                         <input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2' value={$row['task_id']} name=todelete[] type='checkbox'>
                                         <div class='showcontentdetailsinnertilename'>
                                         <span>{$row['user_fname']} {$row['user_sname']}</span>
                                           <div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' style='float:right; margin-right:10px'>
-                                                <a class='delete' style='padding: 7px' id={$row['task_id']}><i id='deleteicon' class='fa fa-trash'></i></a>
+                                                <a class='delete' style='padding: 7px' id={$row['task_id']}><i id='deleteicon' class='fa fa-trash-o'></i></a>
                                             </div>
                                          </div>
                                          <div class='showcontentdetailsinnertiletitle'><span></span>{$row['task_title']}</div>
                                           <div class='showcontentdetailsinnertiledescription'><span>{$row['task_description']}</span></div>
-                                        </div>";
-                                }
-                               ?>
+                                        </div>-->
+                                <!--}-->
+                              
                             </div>                            
                         </div>
                         
@@ -322,7 +368,7 @@ and open the template in the editor.
                         <div class="showpreview2">
                             <div class="showpreviewinner">
                                 <div class="showpreviewinner2">
-                                    <div class="showpreviewinner2upper">
+                                    <div style="display: none" class="showpreviewinner2upper">
                                         <!--<span>Just Something will go here</span>-->
                                     </div>
                                     
@@ -332,12 +378,12 @@ and open the template in the editor.
                                                 <div class="showpreviewinnercontentheaderinnerbuttons">
                                                     <button id="newtaskbutton" class="newtaskbutton" type="button">
                                                         <span style="padding-bottom: 7px; padding-top: 7px">
-                                                            <i class="fa fa-2x fa-plus"></i>
+                                                            <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
                                                         </span>
                                                     </button>
                                                     <button id="deletetaskbutton" class="deletetaskbutton" type="button">
                                                         <span style="padding-bottom: 7px; padding-top: 7px">
-                                                            <i class="fa fa-2x fa-trash"></i>
+                                                            <i class="fa fa-2x fa-trash-o"></i>
                                                         </span>
                                                     </button>
                                                     <button class="updatetaskbutton" type="button">

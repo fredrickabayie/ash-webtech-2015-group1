@@ -21,6 +21,10 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 4:
             update_task ( );
             break;
+        
+        case 5:
+            display_tasks ( );
+            break;
          
         default:
             echo '{"result":0,message:"unknown command"}';
@@ -59,20 +63,29 @@ function task_preview ( )
 /**
  * Function to display all tasks
  */
-function display_all_tasks ( )
+function display_tasks ( )
 {
     include '../models/admin_class.php';
     $obj = new Admin ( );
-        
-    if ( $row = $obj->admin_display_all_tasks ( ) )
+       
+    if ( $obj->admin_display_all_tasks ( ) )
     {
-    echo '{"result":1, "id":"' .$row['task_id'].'",'
-                . '"title":"' .$row['task_title'].'",'
-                . '"description":"' .$row['task_description'].'"}';
-    }
-    else
+        $row = $obj->fetch ( );
+        echo '{"result":1, "tasks": [';
+        while ( $row )
+        {
+            echo '{"task_id": "'.$row ["task_id"].'", "task_title": "'.$row ["task_title"].'", 
+            "task_description": "'.$row ["task_description"].'",  "user_sname": "'.$row ["user_sname"].'",
+            "user_fname": "'.$row ["user_fname"].'"}';
+            
+            if ($row = $obj->fetch())   {
+                    echo ',';
+            }
+        }
+            echo ']}';
+    }   else
     {
-        echo ' { "result":0, "status": "Failed to display" }';
+        echo '{"result":0,"message": "An error occured for select product."}';
     }
 }//end of display_all_tasks()
 
