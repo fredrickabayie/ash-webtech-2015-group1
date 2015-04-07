@@ -52,6 +52,7 @@ and open the template in the editor.
                 {
                     var index = 0;
                     var div = "";
+                    var timer;
                     for ( ; index < obj.tasks.length; index++ )
                     {
                         div += "<div class='showcontentdetailsinnertile showcontentdetailsinnertile2'\n\
@@ -82,6 +83,8 @@ and open the template in the editor.
 //                        $ ( "#divStatus" ).text ( obj.message );
 //                        $ ( "#divStatus" ).css ( "backgroundColor", "red" );
                 }
+                
+                timer = setTimeout ( '(this)', 1000 );
             });
             
             
@@ -98,17 +101,23 @@ and open the template in the editor.
 //                       $ ( ".previewcontentheaderbody" ).show();
                     });
                     
-                    $ ( ".previewcontentheaderbody" ).fadeIn ( 'slow', function ()
+                      $("#showupdatepanel").slideUp ( 'slow', function ()
+                    {
+                       $ ( this ).hide ( );
+//                       $ ( ".previewcontentheaderbody" ).show();
+                    });
+                    
+                    $ ( ".previewcontentheaderbody" ).fadeIn ( 'slow', function ( )
                     {
                         $ ( this ).show ( );
                          $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname);
                     });
-                    $ ( ".previewcontentheaderbodytitle" ).fadeIn ( 'slow', function ()
+                    $ ( ".previewcontentheaderbodytitle" ).fadeIn ( 'slow', function ( )
                     {
                         $ ( this ).show  ( );
                         $(".previewcontentheaderbodytitle2").text ( obj.task_title );
                     });
-                    $ ( ".previewcontentheaderbodydescription" ).fadeIn ( 'slow', function ()
+                    $ ( ".previewcontentheaderbodydescription" ).fadeIn ( 'slow', function ( )
                     {
                         $ ( this ).show ( );
                         $(".previewcontentheaderbodydescription2").text ( obj.task_description );
@@ -206,7 +215,16 @@ and open the template in the editor.
                    var task_title = $ ( ".previewcontentheaderbodytitle2" ).text();
                    var task_description = $ ( ".previewcontentheaderbodydescription2" ).text();
                    
-                   $ ( ".showupdatepanel").show ( );
+                   $ ( ".previewcontentheaderbody" ).hide();
+                    $ ( ".previewcontentheaderbodytitle" ).hide();
+                    $ ( ".previewcontentheaderbodydescription" ).hide();
+                    
+                    $ ( ".showupdatepanel" ).slideDown( function ( ) 
+                    {
+                        $ ( ".previewcontentheaderbody" ).show ( ).slideDown();
+//                        $ ( this ).show ( ).slideDown();
+                    });
+//                   $ ( ".showupdatepanel").show ( );
                    $ ( "#update_task_id" ).attr( "value", task_id );
                    $ ( "#update_task_title" ).attr( "value", task_title );
                    $ ( "#update_task_description" ).attr( "value", task_description );            
@@ -404,10 +422,10 @@ and open the template in the editor.
                                                      </div>
                                                     <div class="previewcontentheaderbodynamecontainer">
                                                         <div class="previewcontentheaderbodyname">
-                                                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2">Fredrick Abayie</span>
+                                                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2"></span>
                                                         </div>
                                                         <div class="previewcontentheaderbodydate">
-                                                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2">Sat 04/04/2015 10:50pm</span>
+                                                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2"></span>
                                                         </div>
                                                     </div>
                                                 </div>                                                
@@ -415,11 +433,11 @@ and open the template in the editor.
                                         </div>
                                         
                                         <div class="previewcontentheaderbodytitle">
-                                            <span class="previewcontentheaderbodytitle2">Diseases In Africa</span>
+                                            <span class="previewcontentheaderbodytitle2"></span>
                                        </div>
                                         
                                         <div class="previewcontentheaderbodydescription">
-                                            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2">Description</span>
+                                            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2"></span>
                                         </div>
                                     </div>
                                 </div>

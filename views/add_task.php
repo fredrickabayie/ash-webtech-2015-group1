@@ -72,6 +72,7 @@
             <textarea class="task_description" id="task_description" name="task_description" type="text" placeholder="task description" required="">
             </textarea>
         </div><br>
+        <div><input type="file" name="image"></div><br>
         <div>
             <button class="add_button" id="add_button" type="button" name="add_button" onclick="insertTask ( )">Insert</button>
         </div><br>
