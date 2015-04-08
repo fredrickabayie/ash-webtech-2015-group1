@@ -5,10 +5,10 @@ if ( isset ( $_SESSION [ 'user_type' ] ) && isset ( $_SESSION [ 'user_id' ] )  )
     if ( $_SESSION [ 'user_type' ] == 'admin' )
     {
         $user_id = $_SESSION [ 'user_id'];
-       echo "<input style='display:none' id='user_id' class='user_id' type='text' value='$user_id'>";
+       echo "<input style='display' id='user_id' class='user_id' type='text' value='$user_id'>";
     }
     else{
-        echo "<input class='user_id' type='text' value='no id>";
+        echo "<input id='user_id' class='user_id' type='text' value='no id'>";
     }
 }
 ?>
@@ -101,7 +101,7 @@ and open the template in the editor.
 //                       $ ( ".previewcontentheaderbody" ).show();
                     });
                     
-                      $("#showupdatepanel").slideUp ( 'slow', function ()
+                      $("#showaddpanel").slideUp ( 'slow', function ()
                     {
                        $ ( this ).hide ( );
 //                       $ ( ".previewcontentheaderbody" ).show();
@@ -323,12 +323,20 @@ and open the template in the editor.
                                     <div>
                                         <button class="buttonsbuttons">Tasks</button>
                                     </div>
-                                    <div>
-                                        <button class="buttonsbuttons">Nurses</button>
-                                    </div>
-                                    <div>
-                                        <button class="buttonsbuttons">Departments</button>
-                                    </div>
+                                    <?php
+                                    
+                                      if ( $_SESSION [ 'user_type' ] == 'admin' )
+                                        {
+                                           echo  '<div style="" id="nursesnav">
+                                                <button class="buttonsbuttons">Nurses</button>
+                                            </div>
+                                            <div>
+                                             <button class="buttonsbuttons">Departments</button>
+                                             </div>';
+                                        }
+                                      
+                                     ?>
+                                    
                                 </div>
                             </div>
                             
@@ -389,11 +397,7 @@ and open the template in the editor.
                                     <div style="display: none" class="showpreviewinner2upper">
                                         <!--<span>Just Something will go here</span>-->
                                     </div>
-                                    
-                                    <div class="showpreviewinnercontent">
-                                        <div class="showpreviewinnercontentheader">
-                                            <div class="showpreviewinnercontentheaderinner">
-                                                <div class="showpreviewinnercontentheaderinnerbuttons">
+                                       <div class="showpreviewinnercontentheaderinnerbuttons">
                                                     <button id="newtaskbutton" class="newtaskbutton" type="button">
                                                         <span style="padding-bottom: 7px; padding-top: 7px">
                                                             <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
@@ -410,6 +414,11 @@ and open the template in the editor.
                                                         </span>
                                                     </button>
                                                 </div>
+                                    <div class="showpreviewinnercontent">
+                                     
+                                        <div class="showpreviewinnercontentheader">
+                                            <div class="showpreviewinnercontentheaderinner">
+                                                
                                                 
                                                 <div class="previewcontentheaderbody">
                                                     <?php include '../views/add_task.php'; ?>

@@ -87,7 +87,7 @@
                         $_SESSION ['user_type'] = $user_type;
                         echo "log in as regular";
                         echo $_SESSION ['user_id'] = $row['user_id'];
-                        header("Location: regular.php");
+                         header("Location: home.php");
                         exit ( );
                     }
                    
