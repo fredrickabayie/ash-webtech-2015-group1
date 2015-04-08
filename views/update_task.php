@@ -83,8 +83,8 @@
      
         
         
-        
-        <div class="showupdatepanel" style="display: none">
+        <div class="update" style="display: none">
+        <div class="showupdatepanel">
         <div>
             <input style="display: none" class="update_task_id" id="update_task_id" name="update_task_id" type="text" placeholder="task id">
         </div><br> 
@@ -98,6 +98,7 @@
         <div>
             <button class="update_button" id="update_button" type="button" name="add_button" onclick="editTask ( )">Update</button>
         </div><br>
+        </div>
         </div>
 </body>
 </html>

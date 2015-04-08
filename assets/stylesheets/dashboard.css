@@ -29,7 +29,7 @@ body{
 }
 
 .maincontainer{
-     background-color: lightyellow;
+    background-color: lightyellow;
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -123,6 +123,29 @@ div{
 }
 
 .leftnavmenuinnerdownnav{
+    background-color: plum;
+    clear: both;
+    display: block;
+    top: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftnavmenuinnernotification{
+    background-color: springgreen;
+    position: absolute;
+    top: 307px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.leftnavmenuinnernotificationinner{
     background-color: plum;
     clear: both;
     display: block;
@@ -574,6 +597,7 @@ cursor: pointer;
 .previewcontentheaderbody{
     background-color: yellowgreen;
     display: block;
+    margin-top: 20px;
 }
 
 .previewcontentheaderbodybutton{
@@ -589,7 +613,7 @@ cursor: pointer;
 
 .showpreviewinnercontentheaderimage{
     float: left;
-    max-width: 71px;
+    max-width: 171px;
     margin: 4px 10px 0 0;
     background-color: peru;
     vertical-align: middle;
@@ -601,8 +625,8 @@ cursor: pointer;
     background-repeat: no-repeat;
     white-space: nowrap;
     display: table-cell;
-    width: 64px;
-    height: 64px;
+    width: 164px;
+    height: 164px;
 }
 
 .previewcontentheaderbodynamecontainer{
@@ -618,6 +642,7 @@ cursor: pointer;
     white-space: nowrap;
     display: inline-block;
     padding-bottom: 0;
+    margin-top: 40px;
     margin-bottom: 5px;
     font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
     color: #333;
@@ -625,26 +650,32 @@ cursor: pointer;
 
 .previewcontentheaderbodydate{
     background-color: dimgrey;
-    margin-top: -2px;
+    /*margin-top: -2px;*/
     color: #333;
     font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: normal;
+    /*margin-top: 5px;*/
+    
 }
 
 .previewcontentheaderbodytitle{
     background-color: wheat;
-    margin-top: 15px;
+    margin-top: 55px;
     float: left;
+    display: block;
     width: 100%;
+    height: 30px;
 }
 
 .previewcontentheaderbodydescription{
     background-color: lime;
     margin-top: 25px;
     float: left;
+    height: 200px;
     width: 100%;
 }
+
 .buttonsbuttons{
     margin: 0px;
     border: 0px;

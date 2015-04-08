@@ -34,7 +34,6 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
 }//end of if
 
 
-
 /**
  * Function to get preview of a task
  */
@@ -60,6 +59,7 @@ function task_preview ( )
     }
 }//end of task_preview()
 
+
 /**
  * Function to display all tasks
  */
@@ -78,7 +78,7 @@ function display_tasks ( )
             "task_description": "'.$row ["task_description"].'",  "user_sname": "'.$row ["user_sname"].'",
             "user_fname": "'.$row ["user_fname"].'"}';
             
-            if ($row = $obj->fetch())   {
+            if ($row = $obj->fetch ( ) )   {
                     echo ',';
             }
         }
@@ -90,6 +90,9 @@ function display_tasks ( )
 }//end of display_all_tasks()
 
 
+/**
+ * Function to delete a task
+ */
 function delete_task ( )
 {
     if ( isset ( $_REQUEST [ 'task_id' ] ) )

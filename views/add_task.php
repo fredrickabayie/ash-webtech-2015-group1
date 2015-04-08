@@ -64,8 +64,9 @@
     /*border-style: none;*/
 }
         </style>
-        <div id="showaddpanel" style="display: none">
-        <div>
+        
+        <div class="add" id="add" style="display: none">
+            <div style="margin-top: 90px;">
             <input class="task_title" id="task_title" name="task_title" type="text" placeholder="task title">
         </div><br> 
         <div>

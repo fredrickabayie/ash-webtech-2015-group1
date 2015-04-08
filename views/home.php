@@ -5,10 +5,10 @@ if ( isset ( $_SESSION [ 'user_type' ] ) && isset ( $_SESSION [ 'user_id' ] )  )
     if ( $_SESSION [ 'user_type' ] == 'admin' )
     {
         $user_id = $_SESSION [ 'user_id'];
-       echo "<input style='display' id='user_id' class='user_id' type='text' value='$user_id'>";
+       echo "<input style='display:none' id='user_id' class='user_id' type='text' value='$user_id'>";
     }
     else{
-        echo "<input id='user_id' class='user_id' type='text' value='no id'>";
+        echo "<input class='user_id' type='text' value='no id'>";
     }
 }
 ?>
@@ -95,40 +95,24 @@ and open the template in the editor.
                 var obj = sendRequest ( theUrl );		
                 if ( obj.result === 1)
                 {
-                     $("#showaddpanel").slideUp ( 'slow', function ()
+                     $(".preview").slideDown ( 'slow', function ( )
                     {
-                       $ ( this ).hide ( );
-//                       $ ( ".previewcontentheaderbody" ).show();
-                    });
+                       $ ( this ).show( );
+//                       $("#")
+                    });                    
                     
-                      $("#showaddpanel").slideUp ( 'slow', function ()
-                    {
-                       $ ( this ).hide ( );
-//                       $ ( ".previewcontentheaderbody" ).show();
-                    });
-                    
-                    $ ( ".previewcontentheaderbody" ).fadeIn ( 'slow', function ( )
-                    {
-                        $ ( this ).show ( );
-                         $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname);
-                    });
-                    $ ( ".previewcontentheaderbodytitle" ).fadeIn ( 'slow', function ( )
-                    {
-                        $ ( this ).show  ( );
-                        $(".previewcontentheaderbodytitle2").text ( obj.task_title );
-                    });
-                    $ ( ".previewcontentheaderbodydescription" ).fadeIn ( 'slow', function ( )
-                    {
-                        $ ( this ).show ( );
-                        $(".previewcontentheaderbodydescription2").text ( obj.task_description );
-                    });
-                    
+                    $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname );
+                    $(".previewcontentheaderbodytitle2").text ( obj.task_title );
+                    $(".previewcontentheaderbodydescription2").text ( obj.task_description );
                     $ ( ".showpreviewinner2upper").text ( obj.task_id );
                                             
-                        console.log(obj.task_title);
-                        console.log(obj.task_description);
+                    console.log(obj.task_title);
+                    console.log(obj.task_description);
                 }
+                 $(".add").hide();
+                 $(".update").hide();
             }
+            
 
             //function to send an ajax request
             function sendRequest ( u )
@@ -177,60 +161,40 @@ and open the template in the editor.
             {
                 $ ( ".newtaskbutton" ).click ( function ( )
                 {
-                    $ ( "#newtaskicon").attr( "class", "fa fa-2x fa-spin fa-plus" );
-                    $ ( ".previewcontentheaderbody" ).fadeOut ( 'slow', function ()
+                    $(".add").slideDown ( 'slow', function ( )
                     {
-                        $ ( this ).hide ( );
+                        $(this).show();
                     });
-                    $ ( ".previewcontentheaderbodytitle" ).fadeOut ( 'slow', function ()
-                    {
-                        $ ( this ).hide  ( );
-                    });
-                    $ ( ".previewcontentheaderbodydescription" ).fadeOut ( 'slow', function ()
-                    {
-                        $ ( this ).hide ( );
-                    });
-                    
-                    $("#showaddpanel").fadeIn ( 'slow', function ()
-                    {
-                         $ ( ".previewcontentheaderbody" ).show();
-                       $ ( this ).show ( ).slideDown();
-                       $ ( "#newtaskicon").attr( "class", "fa fa-2x fa-plus" );
-                    });
-//                    $ ( ".previewcontentheaderbody" ).show();
+                    $(".preview").hide();
+                    $(".update").hide();
                 });
             });
+            
            
            /**
             * Function to process the edit button
             * @returns {Boolean}
             */
-           function get_edit_val ( )
+           $ ( function ( ) 
            {
-//           $ ( function ( ) 
-//           {
-//               $ ( ".updatetaskbutton" ).click ( function ( ) 
-//               {
+               $ ( ".updatetaskbutton" ).click ( function ( ) 
+               {
                    var task_id = $ ( ".showpreviewinner2upper" ).text();
                    var task_title = $ ( ".previewcontentheaderbodytitle2" ).text();
                    var task_description = $ ( ".previewcontentheaderbodydescription2" ).text();
                    
-                   $ ( ".previewcontentheaderbody" ).hide();
-                    $ ( ".previewcontentheaderbodytitle" ).hide();
-                    $ ( ".previewcontentheaderbodydescription" ).hide();
-                    
-                    $ ( ".showupdatepanel" ).slideDown( function ( ) 
+                   $(".update").slideDown ( 'slow', function ( )
                     {
-                        $ ( ".previewcontentheaderbody" ).show ( ).slideDown();
-//                        $ ( this ).show ( ).slideDown();
+                        $(this).show();
                     });
-//                   $ ( ".showupdatepanel").show ( );
+                    $(".preview").hide();
+                    $(".add").hide();
+                    
                    $ ( "#update_task_id" ).attr( "value", task_id );
                    $ ( "#update_task_title" ).attr( "value", task_title );
                    $ ( "#update_task_description" ).attr( "value", task_description );            
-               }
-//               });
-//           });
+               });
+           });
            
            /**
             * 
@@ -243,7 +207,7 @@ and open the template in the editor.
                var obj = sendRequest ( url );		
                 if ( obj.result === 1)
                 {
-                       return $(".showpreviewinnercontentbody").text( obj.status );
+                       return $(".leftnavmenuinnernotificationinner").text( obj.status );
                        window.location.reload(true);
                 }
            }
@@ -262,7 +226,7 @@ and open the template in the editor.
                 
                 if ( obj.status === 1)
                 {
-//                     $("#divStatus").text(obj.status);
+                     $(".leftnavmenuinnernotificationinner").text( obj.status );
                 }
                 else
                 {
@@ -323,25 +287,19 @@ and open the template in the editor.
                                     <div>
                                         <button class="buttonsbuttons">Tasks</button>
                                     </div>
-                                    <?php
-                                    
-                                      if ( $_SESSION [ 'user_type' ] == 'admin' )
-                                        {
-                                           echo  '<div style="" id="nursesnav">
-                                                <button class="buttonsbuttons">Nurses</button>
-                                            </div>
-                                            <div>
-                                             <button class="buttonsbuttons">Departments</button>
-                                             </div>';
-                                        }
-                                      
-                                     ?>
-                                    
+                                    <div>
+                                        <button class="buttonsbuttons">Nurses</button>
+                                    </div>
+                                    <div>
+                                        <button class="buttonsbuttons">Departments</button>
+                                    </div>
                                 </div>
                             </div>
                             
                             <div class="leftnavmenuinnernotification">
-                                
+                                <div class="leftnavmenuinnernotificationinner">
+                                    Notification:
+                                </div>                                
                             </div>
                             
                         </div>
@@ -363,26 +321,7 @@ and open the template in the editor.
                         <div class="showcontentdetails">
                             <div class="showcontentdetailsinner">
                                 
-                                
-<!--                                include '../models/admin_class.php';
-                                $obj = new Admin ( ); 
-                                $obj->admin_display_all_tasks ( );
-                                
-                                while ( $row = $obj->fetch ( )  )
-                                {-->
-<!--                                    <div class='showcontentdetailsinnertile showcontentdetailsinnertile2' onclick="getPreview ({$row['task_id']})">
-                                        <input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2' value={$row['task_id']} name=todelete[] type='checkbox'>
-                                        <div class='showcontentdetailsinnertilename'>
-                                        <span>{$row['user_fname']} {$row['user_sname']}</span>
-                                          <div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' style='float:right; margin-right:10px'>
-                                                <a class='delete' style='padding: 7px' id={$row['task_id']}><i id='deleteicon' class='fa fa-trash-o'></i></a>
-                                            </div>
-                                         </div>
-                                         <div class='showcontentdetailsinnertiletitle'><span></span>{$row['task_title']}</div>
-                                          <div class='showcontentdetailsinnertiledescription'><span>{$row['task_description']}</span></div>
-                                        </div>-->
-                                <!--}-->
-                              
+                                                            
                             </div>                            
                         </div>
                         
@@ -395,60 +334,35 @@ and open the template in the editor.
                             <div class="showpreviewinner">
                                 <div class="showpreviewinner2">
                                     <div style="display: none" class="showpreviewinner2upper">
-                                        <!--<span>Just Something will go here</span>-->
+                                        <span>Just Something will go here</span>
                                     </div>
-                                       <div class="showpreviewinnercontentheaderinnerbuttons">
-                                                    <button id="newtaskbutton" class="newtaskbutton" type="button">
-                                                        <span style="padding-bottom: 7px; padding-top: 7px">
-                                                            <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
-                                                        </span>
-                                                    </button>
-                                                    <button id="deletetaskbutton" class="deletetaskbutton" type="button">
-                                                        <span style="padding-bottom: 7px; padding-top: 7px">
-                                                            <i class="fa fa-2x fa-trash-o"></i>
-                                                        </span>
-                                                    </button>
-                                                    <button class="updatetaskbutton" type="button">
-                                                        <span onclick="get_edit_val ( )" style="padding-bottom: 7px; padding-top: 7px">
-                                                            <i class="fa fa-2x fa-pencil"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                    <div class="showpreviewinnercontent">
-                                     
-                                        <div class="showpreviewinnercontentheader">
-                                            <div class="showpreviewinnercontentheaderinner">
-                                                
-                                                
-                                                <div class="previewcontentheaderbody">
-                                                    <?php include '../views/add_task.php'; ?>
-                                                    <?php include '../views/update_task.php'; ?>
-                                                    <button class="previewcontentheaderbodybutton">
-                                                        <span>Somebutton</span>
-                                                    </button>
-                                                    <div class="showpreviewinnercontentheaderimage">
-                                        
-                                                     </div>
-                                                    <div class="previewcontentheaderbodynamecontainer">
-                                                        <div class="previewcontentheaderbodyname">
-                                                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2"></span>
-                                                        </div>
-                                                        <div class="previewcontentheaderbodydate">
-                                                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>                                                
-                                            </div>
+                                    
+                                    <!--<div class="showpreviewinnercontent">-->
+                                        <div class="showpreviewinnercontentheaderinnerbuttons">
+                                                  <button id="newtaskbutton" class="newtaskbutton" type="button">
+                                                      <span style="padding-bottom: 7px; padding-top: 7px">
+                                                          <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
+                                                      </span>
+                                                  </button>
+                                                  <button id="deletetaskbutton" class="deletetaskbutton" type="button">
+                                                      <span style="padding-bottom: 7px; padding-top: 7px">
+                                                          <i class="fa fa-2x fa-trash-o"></i>
+                                                      </span>
+                                                  </button>
+                                                  <button class="updatetaskbutton" type="button">
+                                                      <span style="padding-bottom: 7px; padding-top: 7px">
+                                                          <i class="fa fa-2x fa-pencil"></i>
+                                                      </span>
+                                                  </button>
                                         </div>
                                         
-                                        <div class="previewcontentheaderbodytitle">
-                                            <span class="previewcontentheaderbodytitle2"></span>
-                                       </div>
+                                        <?php include_once 'preview.php';
+                                        include_once 'add_task.php';
+                                        include_once 'update_task.php';
+                                        ?>
+                                       
                                         
-                                        <div class="previewcontentheaderbodydescription">
-                                            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2"></span>
-                                        </div>
-                                    </div>
+                                    <!--</div>-->
                                 </div>
                                 
                             </div>
