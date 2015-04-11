@@ -49,7 +49,8 @@ class Admin extends adb
      */
     function admin_preview_task ( $task_id )
     {
-        $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, system_tasks.user_id
+        $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, 
+                                    system_tasks.user_id, path                                    
                                     from system_tasks
                                     join system_users
                                     on system_users.user_id=system_tasks.user_id and system_tasks.task_id='$task_id'";

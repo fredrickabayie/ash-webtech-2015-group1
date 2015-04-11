@@ -7,7 +7,7 @@
                 <div class="previewcontentheaderbody">
 
                     <div class="showpreviewinnercontentheaderimage">
-
+                        <img src="" class="fa fa-2x fa-user">
                      </div>
                     <div class="previewcontentheaderbodynamecontainer">
                         <div class="previewcontentheaderbodyname">

@@ -50,10 +50,12 @@ function task_preview ( )
 
         while ( $row = $obj->fetch ( ) )
         {
+//            echo json_encode ( $row );
             echo '{"result":1, "task_title":"' .$row['task_title'].'",'
                     . '"task_id":"' .$row['task_id'].'",'
                    . '"user_fname":"' .$row['user_fname'].'",'
                     . '"user_sname":"' .$row['user_sname'].'",'
+                    . '"user_picture":"' .$row['path'].'",'
                    . '"task_description":"' .$row['task_description'].'"}';
         }
     }

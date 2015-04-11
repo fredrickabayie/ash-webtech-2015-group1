@@ -629,6 +629,13 @@ cursor: pointer;
     height: 164px;
 }
 
+img{
+    max-width: 164px;
+    max-height: 164px;
+    min-height: 164px;
+    min-width: 164px;
+}
+
 .previewcontentheaderbodynamecontainer{
     background-color: goldenrod;
     padding: 5px 0 0 0;

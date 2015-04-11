@@ -12,7 +12,6 @@ if ( isset ( $_SESSION [ 'user_type' ] ) && isset ( $_SESSION [ 'user_id' ] )  )
     }
 }
 ?>
-
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -50,10 +49,9 @@ and open the template in the editor.
 
                 if ( obj.result === 1 )
                 {
-                    var index = 0;
                     var div = "";
                     var timer;
-                    for ( ; index < obj.tasks.length; index++ )
+                    for ( var index in obj.tasks )
                     {
                         div += "<div class='showcontentdetailsinnertile showcontentdetailsinnertile2'\n\
                                     onclick='getPreview ( "+ obj.tasks [index].task_id+" )'>";   
@@ -101,6 +99,7 @@ and open the template in the editor.
 //                       $("#")
                     });                    
                     
+                    $(".showpreviewinnercontentheaderimage img").attr( "src", obj.user_picture );
                     $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname );
                     $(".previewcontentheaderbodytitle2").text ( obj.task_title );
                     $(".previewcontentheaderbodydescription2").text ( obj.task_description );
@@ -356,7 +355,8 @@ and open the template in the editor.
                                                   </button>
                                         </div>
                                         
-                                        <?php include_once 'preview.php';
+                                        <?php
+                                        include_once 'preview.php';
                                         include_once 'add_task.php';
                                         include_once 'update_task.php';
                                         ?>
