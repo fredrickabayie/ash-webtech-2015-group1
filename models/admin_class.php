@@ -82,8 +82,9 @@ class Admin extends adb
         return $this->query ( $add_query );        
     }//end of admin_add_new_task ( $admin_id )
     
+    
     /**
-     * 
+     * Function to update a task
      * @param type $task_id
      * @param type $task_title
      * @param type $task_description
@@ -99,7 +100,25 @@ class Admin extends adb
         return $this->query ( $update_query );
     }//end of update or edit task
     
-     /**
+    
+    /**
+     * Function to search for a task
+     * @param type $search_text The text to be searched
+     * @return type Returning the result obtained
+     */
+    function admin_search_task ( $search_text )
+    {
+        $search_query = "select task_id, task_description, task_title, user_fname, user_sname
+                                from system_tasks
+                                join system_users
+                                on system_tasks.user_id=system_users.user_id
+                                and system_tasks.task_title like '%$search_text%'
+                                order by task_id desc;";
+        return $this->query ( $search_query );
+    }//end of admin_search_task()
+    
+    
+  /**
     * A function to get all the users
     **/
     function get_all_users ( )

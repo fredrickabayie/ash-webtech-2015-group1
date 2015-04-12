@@ -25,6 +25,10 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 5:
             display_tasks ( );
             break;
+        
+        case 6:
+            search_task ( );
+            break;
          
         default:
             echo '{"result":0,message:"unknown command"}';
@@ -40,7 +44,7 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
 function task_preview ( )
 {
     if ( isset ( $_REQUEST [ 'task_id' ] ) )
-    {
+    { 
         include '../models/admin_class.php';
         
         $task_id = $_REQUEST [ 'task_id' ];
@@ -170,3 +174,35 @@ function update_task ( )
         }        
     }
 }//end of update_task ( )
+
+
+function search_task ( )
+{
+    if ( isset ( $_REQUEST [ 'search_text' ] ) )
+    {
+        include '../models/admin_class.php';
+        
+        $search_text = $_REQUEST [ 'search_text' ];
+        
+        $obj = new Admin ( );
+        
+        if ( $obj->admin_search_task ( $search_text ) )
+        {
+            $row = $obj->fetch ( );
+            echo '{"result":1, "tasks": [';
+            while ( $row )
+            {
+                echo '{"task_id": "'.$row ["task_id"].'", "task_title": "'.$row ["task_title"].'", 
+                "task_description": "'.$row ["task_description"].'",  "user_sname": "'.$row ["user_sname"].'",
+                "user_fname": "'.$row ["user_fname"].'"}';
+                if ($row = $obj->fetch ( ) )   {
+                        echo ',';
+                }
+            }
+                echo ']}';
+        }   else
+        {
+            echo '{"result":0,"message": "An error occured for select product."}';
+        }
+    }
+}//end of search_task()
