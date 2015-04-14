@@ -68,7 +68,7 @@
                 $row = $login->user_login ( $username, $password );
                 if ( !$row )
                 {
-                    echo "Failed to log in"; 
+                    echo "Failed to log in";
                 }
                 else
                 {

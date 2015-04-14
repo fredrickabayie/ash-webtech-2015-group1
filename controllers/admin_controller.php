@@ -195,7 +195,7 @@ function search_task ( )
                 echo '{"task_id": "'.$row ["task_id"].'", "task_title": "'.$row ["task_title"].'", 
                 "task_description": "'.$row ["task_description"].'",  "user_sname": "'.$row ["user_sname"].'",
                 "user_fname": "'.$row ["user_fname"].'"}';
-                if ($row = $obj->fetch ( ) )   {
+                if ( $row = $obj->fetch ( ) )   {
                         echo ',';
                 }
             }

@@ -128,9 +128,9 @@ and open the template in the editor.
                  
                     var divContainer = $ ( this ).parents ( ".showcontentdetailsinnertile" );
                     var icondelete = $ ( this ).children ( "#deleteicon" );
-                    var id = $ ( this ).attr ( "id" );
+                    var id = $ ( this ).attr ( "id" );  
                     console.log ( id );
-                    var string = 'cmd=2&task_id='+ id ;
+                    var string = 'cmd=2&task_id='+ id ; 
 
                     $.ajax ( 
                             {
