@@ -630,9 +630,10 @@ cursor: pointer;
     display: table-cell;
     width: 164px;
     height: 164px;
+    
 }
 
-img{
+.showpreviewinnercontentheaderimage img{
     max-width: 164px;
     max-height: 164px;
     min-height: 164px;
@@ -669,6 +670,10 @@ img{
     
 }
 
+.previewcontentheaderbodycollaborator{
+    
+}
+
 .previewcontentheaderbodytitle{
     background-color: wheat;
     margin-top: 55px;
@@ -684,6 +689,8 @@ img{
     float: left;
     height: 200px;
     width: 100%;
+    /*white-space: nowrap;*/
+    /*display: block;*/
 }
 
 .buttonsbuttons{

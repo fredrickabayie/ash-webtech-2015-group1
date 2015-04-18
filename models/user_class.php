@@ -88,7 +88,7 @@ class User extends adb
     function user_preview_task ( $task_id )
     {
         $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, 
-                                    system_tasks.user_id, path                                    
+                                    system_tasks.user_id, path, task_collaborator
                                     from system_tasks
                                     join system_users
                                     on system_users.user_id=system_tasks.user_id and system_tasks.task_id='$task_id'";
@@ -123,12 +123,15 @@ class User extends adb
     
     /**
      * Function to allow user to select collaborator
-     * @return type
+     * @return type 
      */
     function user_select_collaborator ( $user_id )
     {
-        $collaborator_query = "select user_fname, user_sname, user_id from system_users"
-                                        . "where user_id != '$user_id'";
+        $collaborator_query = "select user_fname, user_sname, system_users.user_id, user_type 
+                                    from system_users 
+                                    inner join system_login
+                                    on system_login.user_id = system_users.user_id
+                                    and system_login.user_type != 'admin' and system_users.user_id != '$user_id'";
         return $this->query ( $collaborator_query );
     }//end of user_select_collaborator ( )
     
@@ -156,14 +159,15 @@ class User extends adb
      * @param type $search_text The text to be searched
      * @return type Returning the result obtained
      */
-    function user_search_task ( $search_text )
+    function user_search_task ( $search_text, $user_id )
     {
         $search_query = "select task_id, task_description, task_title, user_fname, user_sname
                                 from system_tasks
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id
+                                and system_tasks.task_collaborator = '$user_id'
                                 and system_tasks.task_title like '%$search_text%'
-                                order by task_id desc;";
+                                order by task_id desc";
         return $this->query ( $search_query );
     }//end of admin_search_task()
     

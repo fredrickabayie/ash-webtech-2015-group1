@@ -7,25 +7,28 @@
                 <div class="previewcontentheaderbody">
 
                     <div class="showpreviewinnercontentheaderimage">
-                        <img src="" class="fa fa-2x fa-user">
+                        <img src="" alt="...">
                      </div>
                     <div class="previewcontentheaderbodynamecontainer">
                         <div class="previewcontentheaderbodyname">
-                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2">Fred</span>
+                            <span style="padding-left: 20px" class="previewcontentheaderbodyname2">Name</span>
                         </div>
                         <div class="previewcontentheaderbodydate">
-                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2">2 April 2015</span>
+                            <span style="padding-left: 20px" class="previewcontentheaderbodydate2">Date</span>
+                        </div>
+                         <div class="previewcontentheaderbodycollaborator">
+                            <span style="padding-left: 20px" class="previewcontentheaderbodycollaborator2">Collaborator</span>
                         </div>
                     </div>
-                </div>                                                
+                </div>
             </div>
         </div>
 
         <div class="previewcontentheaderbodytitle">
-            <span class="previewcontentheaderbodytitle2">xjdhfbgjk</span>
+            <span class="previewcontentheaderbodytitle2">Task Title</span>
        </div>
 
         <div class="previewcontentheaderbodydescription">
-            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2">df,kgjdlfjkg</span>
+            <span style="padding-left: 20px" class="previewcontentheaderbodydescription2">Task Description</span>
         </div>
 </div>

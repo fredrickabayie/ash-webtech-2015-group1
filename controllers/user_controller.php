@@ -62,17 +62,23 @@ function task_preview ( )
         $task_id = $_REQUEST [ 'task_id' ];
         
         $obj=new User ( );         
-        $obj->user_preview_task ( $task_id );
-
-        while ( $row = $obj->fetch ( ) )
+        if ( $obj->user_preview_task ( $task_id ) )
         {
-//            echo json_encode ( $row );
-            echo '{"result":1, "task_title":"' .$row['task_title'].'",'
-                    . '"task_id":"' .$row['task_id'].'",'
-                   . '"user_fname":"' .$row['user_fname'].'",'
-                    . '"user_sname":"' .$row['user_sname'].'",'
-                    . '"user_picture":"' .$row['path'].'",'
-                   . '"task_description":"' .$row['task_description'].'"}';
+            while ( $row = $obj->fetch ( ) )
+            {
+//                echo json_encode ( $row );
+                echo '{"result":1, "task_title":"' .$row['task_title'].'",'
+                        . '"task_id":"' .$row['task_id'].'",'
+                       . '"user_fname":"' .$row['user_fname'].'",'
+                        . '"user_sname":"' .$row['user_sname'].'",'
+                        . '"user_picture":"' .$row['path'].'",'
+                         . '"task_collaborator":"' .$row['task_collaborator'].'",'
+                       . '"task_description":"' .$row['task_description'].'"}';
+            }
+        }
+        else
+        {
+            echo '{"result":0, "message":"Failed to load the preview"}';
         }
     }
 }//end of task_preview()
@@ -201,10 +207,12 @@ function search_task ( )
         include '../models/user_class.php';
         
         $search_text = $_REQUEST [ 'search_text' ];
+        session_start();
+        $user_id = $_SESSION['user_id'];
         
         $obj = new User ( );
         
-        if ( $obj->user_search_task ( $search_text ) )
+        if ( $obj->user_search_task ( $search_text, $user_id ) )
         {
             $row = $obj->fetch ( );
             echo '{"result":1, "tasks": [';
@@ -306,6 +314,8 @@ function  select_collaborator ( )
     if ( isset ( $_REQUEST['user_id'] ) )
     {
         $user_id = $_REQUEST['user_id'];
+//        session_start();
+//        $user_id = $_SESSION['user_id'];
         include_once '../models/user_class.php';
         $obj = new User ( );
  

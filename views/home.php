@@ -8,10 +8,13 @@ if ( isset ( $_SESSION [ 'user_type' ] ) && isset ( $_SESSION [ 'user_id' ] )  )
        echo "<input style='display' id='user_id' class='user_id' type='text' value='$user_id'>";
     }
     else{
-        echo "<input class='user_id' type='text' value='no id'>";
+//        echo "<input class='user_id' type='text' value='no id'>";
         header("Location: index.php");
         exit();
     }
+}
+else{
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -60,7 +63,7 @@ and open the template in the editor.
                         div += "<input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2'\n\
                                     value="+obj.tasks [index].task_id+" name='todelete[]' type='checkbox'>";
                         div += "<div class='showcontentdetailsinnertilename'>";
-                        div += "<span>"+obj.tasks [index].user_fname+""+obj.tasks [index].user_sname+"</span>";
+                        div += "<span>"+obj.tasks [index].user_fname+" "+obj.tasks [index].user_sname+"</span>";
                         div += "<div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' \n\
                                     style='float:right; margin-right:10px'>";
                         div += "<a class='delete' style='padding: 7px' id="+obj.tasks [index].task_id+"><i id='deleteicon' \n\
@@ -91,21 +94,26 @@ and open the template in the editor.
             {
                 var theUrl="../controllers/user_controller.php?cmd=1&task_id="+id;
                 var obj = sendRequest ( theUrl );		
-                if ( obj.result === 1)
+                if ( obj )
                 {
                      $(".preview").slideDown ( 'slow', function ( )
                     {
                        $ ( this ).show( );
                     });                    
-
+                    
                     $(".showpreviewinnercontentheaderimage img").attr( "src", obj.user_picture );
                     $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname );
                     $(".previewcontentheaderbodytitle2").text ( obj.task_title );
                     $(".previewcontentheaderbodydescription2").text ( obj.task_description );
+                    $(".previewcontentheaderbodycollaborator2").text ( obj.task_collaborator );
                     $ ( ".showpreviewinner2upper").text ( obj.task_id );
 
                     console.log(obj.task_title);
                     console.log(obj.task_description);
+                }
+                else
+                {
+                    alert("failed to preview a task");
                 }
                  $(".add").hide();
                  $(".update").hide();
@@ -133,7 +141,7 @@ and open the template in the editor.
                     console.log ( id );
                     var string = 'cmd=2&task_id='+ id ; 
 
-                    $.ajax ( 
+                    $.ajax (
                             {
                 //                type: "POST",
                                 url: "../controllers/user_controller.php",
@@ -377,6 +385,10 @@ and open the template in the editor.
             <div class="innercontainer">
                 <div class="header" id="header">
                     <div class="">
+                        <?php            
+//                        session_start();
+                        echo $_SESSION['username'];
+                        ?>
                     </div>
 
                 </div>
