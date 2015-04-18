@@ -7,7 +7,7 @@
 body{
     width: 100%;
     height: 100%;
-    /*background-color: #F5F5F5;*/
+    background-color: #F5F5F5;
     margin: 0px;
     padding: 0px;
     border: 0px;
@@ -218,10 +218,13 @@ div{
 
 .showcontenttopsearchfield{
     padding-left: 5px;
-    margin-left: 50px;
+    margin-left: 40px;
+    margin-right: 10px;
     margin-top: 3px;
-    width: 400px;
-    height: 22px;
+    width: 470px;
+    height: 30px;
+    position: absolute;
+    display: none;
 }
 
 .showcontentdetails{
@@ -285,7 +288,7 @@ cursor: pointer;
 }*/
 
 .showcontentdetailsinnertile:hover .showcontentdetailsinnertilecheckbox{
-    /*background-color: red;*/
+    background-color: red;
     opacity: 1;
     filter: alpha ( opacity = 1);
     border: 0px;
@@ -299,7 +302,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertile2:hover{
-    background-color: black
+    background-color: lightgray
 }
 
 .showcontentdetailsinnertilecheckbox{
@@ -329,7 +332,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertiledelete{
-    /*background-color: blue;*/
+    background-color: blue;
 /*    width: 20px;
     height: 20px;*/
     cursor: pointer;
@@ -551,7 +554,7 @@ cursor: pointer;
     display: inline-block;
     border-width: 2px;
     border-color: blue;
-    /*border: 2px solid blue;*/
+    border: 2px solid blue;
     background-color: transparent;
     
     /*padding: 0;*/
@@ -688,6 +691,7 @@ img{
     border: 0px;
     cursor: pointer;
     width: 100%;
+    height: 50px;
     text-align: left;
     padding-left: 50px;
     font-size: 17px;
@@ -703,7 +707,28 @@ img{
     border-right: 10px solid red;
 }
 
+.username{
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;;
+    font-size: 15px;
+    border: 1px solid black;
+    width: 380px;
+    height: 35px;
+    padding-left: 10px;
+    margin-left: 50px;
+    border-radius: 3px;
+}
 
+.password{
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;;
+    font-size: 15px;
+    border: 1px solid black;
+    width: 380px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: 50px;
+    padding-left: 10px;
+    border-radius: 3px;
+}
 
 
 
@@ -937,16 +962,16 @@ cursor: auto;
 
 #image{
     width: 1520px;
-height: 1156px;
-border: 0px;
-margin: 0px;
-padding: 0px;
+    height: 1156px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
     display: block;
     position: absolute;
     visibility: visible;
     display: block;
     background-color: rgb(235, 60, 0);
-     /*background: url("../..//assets/img/illustration.jpg") no-repeat fixed;*/
+     background: url("../..//assets/img/illustration.jpg") no-repeat fixed;
     /*background: #ffffff url(../assets/img/illustration.jpg) ;*/
 }
 
@@ -975,14 +1000,14 @@ div{
 
 #loginpanel{
     background: #FFFFFF;
-position: fixed;
-right: 0px;
-float: right;
-height: 100%;
-width: 500px;
-margin: 0px;
-padding: 0px;
-z-index: 1;
-overflow-y: auto;
-overflow-x: hidden;
+    position: fixed;
+    right: 0px;
+    float: right;
+    height: 100%;
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
