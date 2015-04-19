@@ -175,17 +175,18 @@ function add_task ( )
 function update_task ( )
 {
     if ( isset ( $_REQUEST [ 'update_task_id' ] ) && isset ( $_REQUEST [ 'update_task_description' ] )
-            && isset ( $_REQUEST [ 'update_task_title' ] ) )
+            && isset ( $_REQUEST [ 'update_task_title' ] ) && isset ( $_REQUEST [ 'update_task_title' ] ) )
     {
         include '../models/user_class.php';
         
         $task_title = $_REQUEST [ 'update_task_title' ];
         $task_description = $_REQUEST [ 'update_task_description' ];
         $task_id = $_REQUEST [ 'update_task_id' ];
+        $task_collaborator = $_REQUEST['task_collaborator'];
         
         $obj = new User ( );
         
-         if ( $obj->user_update_task ( $task_id, $task_title, $task_description ) )
+         if ( $obj->user_update_task ( $task_id, $task_title, $task_description, $task_collaborator ) )
         {
             echo ' { "result":1, "status": "Successfully updated task" } ';
         }
@@ -267,6 +268,7 @@ function user_login ( )
                 echo '{"result":1, "username":"'.$row['username'].'"}';
                 $_SESSION ['user_type'] = $user_type;
                 $_SESSION ['user_id'] = $row['user_id'];
+                $_SESSION ['path'] = $row['path'];
                 $_SESSION ['username'] = $row['username'];
 //                header("Location: home.php");
 //                exit ( );

@@ -5,7 +5,9 @@ if ( isset ( $_SESSION [ 'user_type' ] ) && isset ( $_SESSION [ 'user_id' ] )  )
     if ( $_SESSION [ 'user_type' ] == 'regular' )
     {
         $user_id = $_SESSION [ 'user_id'];
-       echo "<input style='display' id='user_id' class='user_id' type='text' value='$user_id'>";
+        $path = $_SESSION ['path'];
+       echo "<input style='display: none' id='user_id' class='user_id' type='text' value='$user_id'>";
+       echo "<input style='display: none' id='path' class='path' type='text' value='$path'>";
     }
     else{
 //        echo "<input class='user_id' type='text' value='no id'>";
@@ -45,15 +47,18 @@ and open the template in the editor.
         <link rel="stylesheet" href="../assets/font-awesome-4.3.0/css/font-awesome.css" type="text/css">
 
         <script>
+            
 
 //            Function to load the list of task
             $ ( document ).ready ( function ( )
             {
                var url = "../controllers/user_controller.php?cmd=5";
                var obj = sendRequest ( url );
-
+               var path = "";
                 if ( obj.result === 1 )
                 {
+                    path = $(".path").val();
+                    $("#profileimage").attr("src", path );
                     var div = "";
                     var timer;
                     for ( var index in obj.tasks )
@@ -92,6 +97,7 @@ and open the template in the editor.
                 //function to get description of task
             function getPreview ( id )
             {
+                $(".previewprompttext").hide();
                 var theUrl="../controllers/user_controller.php?cmd=1&task_id="+id;
                 var obj = sendRequest ( theUrl );		
                 if ( obj )
@@ -99,7 +105,7 @@ and open the template in the editor.
                      $(".preview").slideDown ( 'slow', function ( )
                     {
                        $ ( this ).show( );
-                    });                    
+                    });             
                     
                     $(".showpreviewinnercontentheaderimage img").attr( "src", obj.user_picture );
                     $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname );
@@ -249,6 +255,7 @@ and open the template in the editor.
                });
            });
 
+
            /**
             * 
             * @param {type} id
@@ -300,6 +307,7 @@ and open the template in the editor.
                 var update_task_id = document.getElementById("update_task_id").value;
                 var update_task_title = document.getElementById("update_task_title").value;
                 var update_task_description = document.getElementById("update_task_description").value;
+                
 
                 var url = "../controllers/user_controller.php?cmd=4&update_task_title="+update_task_title+
                         "&update_task_description="+update_task_description+"&update_task_id="+update_task_id;
@@ -366,6 +374,8 @@ and open the template in the editor.
             });
         });
         
+        
+        //function to show the search field
         $( function ( )
         {
             $("#searchicon").click( function ( )
@@ -373,6 +383,26 @@ and open the template in the editor.
                 $(".showcontenttopsearchfield").fadeIn("slow").show( );
                 $("#searchicon").attr("class","fa fa-close").fadeIn();
 //                $("#searchicon").attr("id","closeicon");
+            });
+        });
+        
+        
+        //function to disable right click and show footer
+        $ ( document ).ready ( function ( )
+        {
+            $ ( document ).bind ("contextmenu", function ( event )
+            {
+                $(".footer").slideToggle("fast").show();
+//                event.preventDefault();
+//                $("<div class='custom-menu' style='z-index:1000; position:absolute; padding:2px; border:1px solid black; background-color:#C0C0C0'>\n\
+//                    <ul>\n\
+//                    <li>Refresh</li>\n\
+//                    <li>Logout</li>\n\
+//                    </ul></div>")
+//                    .appendTo("body")
+//                    .css({top: event.pageY, left: event.pageX});
+//                alert("Right Click");
+                     return false;
             });
         });
         
@@ -385,12 +415,41 @@ and open the template in the editor.
             <div class="innercontainer">
                 <div class="header" id="header">
                     <div class="">
-                        <?php            
-//                        session_start();
-                        echo $_SESSION['username'];
-                        ?>
+                        <img id="profileimage" src="..." class="fa fa-user"  style="width: 50px; height: 50px; float: right">
                     </div>
-
+                    <div style="height: 50px; width: 5px; float: right; background-color: black; margin: 0px"></div>
+                    
+                    <div style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
+                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
+                            <span>
+                                <i class="fa fa-2x fa-question" style="color: white; padding-top: 8px"></i>
+                            </span>
+                        </button>
+                    </div>
+                     <div style="height: 50px; width: 5px; float: right; background-color: black; margin: 0px"></div>
+                     <div style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
+                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
+                            <span>
+                                <i class="fa fa-2x fa-cog" style="color: white; padding-top: 8px"></i>
+                            </span>
+                        </button>
+                    </div>
+                     <div style="float: left; width: 50px; height: 50px; margin: 0px; text-align: center">
+                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
+                            <span>
+                                <i class="fa fa-2x fa-th" style="color: white; padding-top: 8px"></i>
+                            </span>
+                        </button>
+                    </div>
+                      <div style="float: left; width: 350px; height: 50px; margin: 0px; text-align: center; padding-top: 10px">
+                            <span>
+                                Welcome to SAFE &nbsp;
+                                <?php            
+                                    echo $_SESSION['username'];
+                                ?>
+                            </span>
+                    </div>
+                     
                 </div>
                 <div class="inner2container">
 
@@ -403,13 +462,20 @@ and open the template in the editor.
                             <div class="leftnavmenuinnerdown">
                                 <div class="leftnavmenuinnerdownnav">
                                     <div>
-                                        <button class="buttonsbuttons">Tasks</button>
+                                        <button class="buttonsbuttons">
+                                            <span><i class="fa fa-chevron-up">&nbsp;&nbsp;&nbspTasks</i></span>
+                                        </button>
                                     </div>
                                     <div>
-                                        <button class="buttonsbuttons">Nurses</button>
+                                        <button class="buttonsbuttons">
+                                            <span><i class="fa fa-book">&nbsp;&nbsp;&nbsp;My Tasks</i></span>
+                                        </button>
                                     </div>
                                     <div>
-                                        <button class="buttonsbuttons">Departments</button>
+                                        <button class="buttonsbuttons">Ongoing Tasks</button>
+                                    </div>
+                                    <div>
+                                        <button class="buttonsbuttons">Completed Tasks</button>
                                     </div>
                                 </div>
                             </div>
@@ -448,7 +514,7 @@ and open the template in the editor.
                     <div class="seperator2"></div>
 
                     <div class="showpreview">
-                        <div class="showpreview2">
+                        <div class="showpreview2" style="padding-top: 20px">
                             <div class="showpreviewinner">
                                 <div class="showpreviewinner2">
                                     <div style="display: none" class="showpreviewinner2upper">
@@ -456,7 +522,7 @@ and open the template in the editor.
                                     </div>
 
                                     <!--<div class="showpreviewinnercontent">-->
-                                        <div class="showpreviewinnercontentheaderinnerbuttons">
+                                    <div class="showpreviewinnercontentheaderinnerbuttons" style="padding-top: 20px">
                                                   <button id="newtaskbutton" class="newtaskbutton" type="button">
                                                       <span style="padding-bottom: 7px; padding-top: 7px">
                                                           <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
@@ -480,6 +546,11 @@ and open the template in the editor.
                                         include_once 'update_task.php';
                                         ?>
                                     
+                                    <div class="previewprompttext" style="width: 100%; height: 100%; padding-top: 400px;
+                                        color: white; text-align: center">
+                                        Please select a task to preview its details
+                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -487,6 +558,10 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div style="display: none" class="footer" id="footer">
+            
         </div>
     </body>
 </html>

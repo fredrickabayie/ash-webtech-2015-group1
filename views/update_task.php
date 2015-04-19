@@ -96,6 +96,11 @@
             </textarea>
         </div><br>
         <div>
+            <select id="collaborator" class="collaborator">
+               
+            </select>
+        </div><br>
+        <div>
             <button class="update_button" id="update_button" type="button" name="add_button" onclick="editTask ( )">Update</button>
         </div><br>
         </div>

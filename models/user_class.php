@@ -36,9 +36,13 @@ class User extends adb
      */
     function user_login ( $username, $password )
     {
-       $login_query = "select * "
-                            . "from system_login"
-                            . " where username='$username' and password=MD5('$password') limit 1";
+        $login_query = "select *
+                                from system_login
+                                join system_users
+                                on system_users.user_id=system_login.user_id
+                                and system_login.username='$username' 
+                                and system_login.password=MD5('$password') 
+                                limit 1";
        if ( !$this->query ( $login_query ) )
        {
            return false;
@@ -145,10 +149,11 @@ class User extends adb
      * @param type $task_end_date
      * @return type Returning the result of the query
      */
-    function user_update_task ( $task_id, $task_title, $task_description )
+    function user_update_task ( $task_id, $task_title, $task_description, $task_collaborator )
     {
         $update_query = "update system_tasks set system_tasks.task_title='$task_title',
-                                   system_tasks.task_description='$task_description'
+                                   system_tasks.task_description='$task_description',
+                                   system_tasks.task_collaborator='$task_collaborator'
                                    where system_tasks.task_id='$task_id'";
         return $this->query ( $update_query );
     }//end of update or edit task
