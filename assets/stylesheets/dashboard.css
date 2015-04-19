@@ -29,7 +29,7 @@ body{
 }
 
 .maincontainer{
-    background-color: lightyellow;
+    /*background-color: lightyellow;*/
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -42,7 +42,7 @@ body{
 .innercontainer{
     width: 100%;
     height: 100%;
-    background-color: yellow;
+    /*background-color: yellow;*/
     margin: 0px;
     padding: 0px;
     border: 0px;
@@ -66,7 +66,7 @@ div{
 }
 
 .inner2container{
-    background-color: lightcyan;
+    /*background-color: lightcyan;*/
     overflow: hidden;
     position: absolute;
     top: 50px;
@@ -78,7 +78,7 @@ div{
 }
 
 .leftnavmenu{
-    background-color: lightyellow;
+    /*background-color: lightyellow;*/
     position: absolute;
     top: 0px;
     right: auto;
@@ -90,7 +90,7 @@ div{
 }
 
 .leftnavmenuinner{
-    background-color: thistle;
+    /*background-color: thistle;*/
     position: absolute;
     top: 0;
     bottom: 0;
@@ -99,7 +99,7 @@ div{
 }
 
 .leftnavmenuinnertop{
-    background-color: violet;
+    /*background-color: violet;*/
     position: absolute;
     top: 0;
     height: 100px;
@@ -109,7 +109,7 @@ div{
 }
 
 .leftnavmenuinnerdown{
-    background-color: springgreen;
+    /*background-color: springgreen;*/
     position: absolute;
     top: 107px;
     bottom: 0;
@@ -123,7 +123,7 @@ div{
 }
 
 .leftnavmenuinnerdownnav{
-    background-color: plum;
+    /*background-color: plum;*/
     clear: both;
     display: block;
     top: 3px;
@@ -132,7 +132,7 @@ div{
 }
 
 .leftnavmenuinnernotification{
-    background-color: springgreen;
+    /*background-color: springgreen;*/
     position: absolute;
     top: 307px;
     bottom: 0;
@@ -146,7 +146,7 @@ div{
 }
 
 .leftnavmenuinnernotificationinner{
-    background-color: plum;
+    /*background-color: plum;*/
     clear: both;
     display: block;
     top: 3px;
@@ -167,7 +167,7 @@ div{
 }
 
 .showcontent{
-    background-color: lightslategrey;
+    /*background-color: lightslategrey;*/
     position: absolute;
     top: 0px;
     right: auto;
@@ -182,7 +182,7 @@ div{
 }
 
 .showcontenttop{
-    background-color: lightsalmon;
+    /*background-color: lightsalmon;*/
     position: absolute;
     top: 0px;
     right: 0px;
@@ -193,7 +193,7 @@ div{
 }
 
 .showcontenttoplabel{
-    background-color: lightgoldenrodyellow;
+    /*background-color: lightgoldenrodyellow;*/
     margin-left: 0;
     padding-top: 7px;
     position: absolute;
@@ -206,7 +206,7 @@ div{
 }
 
 .showcontenttopsearch{
-    background-color: lightseagreen;
+    /*background-color: lightseagreen;*/
     position: absolute;
     top: 40px;
     right: 0px;
@@ -228,7 +228,7 @@ div{
 }
 
 .showcontentdetails{
-    background-color: lightskyblue;
+    /*background-color: lightskyblue;*/
     position: absolute;
     top: 77px;
     right: 0px;
@@ -239,7 +239,7 @@ div{
 }
 
 .showcontentdetailsinner{
-    background-color: chocolate;
+    /*background-color: chocolate;*/
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
@@ -275,7 +275,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertile{
-    background-color: olive;
+    /*background-color: olive;*/
     width: 556px;
     height: 66px;
     position: relative;
@@ -319,7 +319,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertilename{
-    background-color: seashell;
+    /*background-color: seashell;*/
     position: relative;
     top: 0;
     left: 0;
@@ -332,7 +332,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertiledelete{
-    background-color: blue;
+    /*background-color: blue;*/
 /*    width: 20px;
     height: 20px;*/
     cursor: pointer;
@@ -341,11 +341,11 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertiledelete:hover{
-    background-color: violet
+    /*background-color: violet*/
 }
 
 .showcontentdetailsinnertiletitle{
-    background-color: silver;
+    /*background-color: silver;*/
     padding-left: 40px;
     position: relative;
     left: 0;
@@ -362,7 +362,7 @@ cursor: pointer;
 }
 
 .showcontentdetailsinnertiledescription{
-    background-color: rosybrown;
+    /*background-color: rosybrown;*/
     margin: -2px 45px 0 23px;
     width: auto;
     white-space: nowrap;
@@ -401,7 +401,7 @@ cursor: pointer;
 }
 
 .showpreview{
-    background-color: khaki;
+    /*background-color: khaki;*/
     position: absolute;
     top: 0px;
     right: 0px;
@@ -412,7 +412,7 @@ cursor: pointer;
 }
 
 .showpreview2{
-    background-color: darkorange;
+    /*background-color: darkorange;*/
     position: relative;
     width: 100%;
     height: 100%;
@@ -441,7 +441,7 @@ cursor: pointer;
 }
 
 .showpreviewinner{
-    background-color: saddlebrown;
+    /*background-color: saddlebrown;*/
     position: absolute;
     top: 0px;
     right: 0px;
@@ -477,7 +477,7 @@ cursor: pointer;
 
 .showpreviewinnerbuttons{
     position: relative;
-    background-color: yellowgreen;
+    /*background-color: yellowgreen;*/
 }
 
 /*.newtaskbutton{
@@ -507,7 +507,7 @@ cursor: pointer;
 }*/
 
 .showpreviewinnercontent{
-    background-color: purple;
+    /*background-color: purple;*/
     min-height: 70px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -520,7 +520,7 @@ cursor: pointer;
 }
 
 .showpreviewinnercontentheader{
-    background-color: magenta;
+    /*background-color: magenta;*/
     min-height: 70px;
     min-width: 200px;
     width: 100%;
@@ -530,17 +530,34 @@ cursor: pointer;
 }
 
 .showpreviewinnercontentheaderinner{
-    background-color: tan;
+    /*background-color: tan;*/
     padding-top: 32px;
     outline: none;
 }
 
 .showpreviewinnercontentheaderinnerbuttons{
-    background-color: orangered;
+    /*background-color: orangered;*/
     position: absolute;
     right: 0;
     top: 0;
     z-index: 1;
+}
+
+.addtaskbutton{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 2px;
+    border-color: blue;
+    border: 2px solid blue;
+    background-color: transparent;
+    cursor: pointer!important;
+    display: none;
 }
 
 .newtaskbutton{
@@ -556,13 +573,11 @@ cursor: pointer;
     border-color: blue;
     border: 2px solid blue;
     background-color: transparent;
-    
-    /*padding: 0;*/
     cursor: pointer!important;
 }
 
 .newtaskbutton:hover{
-    background-color: lightcyan;
+    /*background-color: lightcyan;*/
 }
 
 .newtaskbutton>span>i{
@@ -578,9 +593,23 @@ cursor: pointer;
     margin: 0 0 0 20px;
     padding: 1px;
     display: inline-block;
-    border-width: 0;
-    /*padding: 0;*/
+    border-width: 2px;
+    border-color: blue;
+    border: 2px solid blue;
+    background-color: transparent;
     cursor: pointer!important;
+    
+/*    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer!important;*/
 }
 
 .updatetaskbutton{
@@ -592,13 +621,44 @@ cursor: pointer;
     margin: 0 0 0 20px;
     padding: 1px;
     display: inline-block;
-    border-width: 0;
-    /*padding: 0;*/
+    border-width: 2px;
+    border-color: blue;
+    border: 2px solid blue;
+    background-color: transparent;
     cursor: pointer!important;
+
+/*    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 0;
+    padding: 0;
+    cursor: pointer!important;*/
+}
+
+.edittaskbutton{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 2;
+    margin: 0 0 0 20px;
+    padding: 1px;
+    display: inline-block;
+    border-width: 2px;
+    border-color: blue;
+    border: 2px solid blue;
+    background-color: transparent;
+    cursor: pointer!important;
+    display: none;
 }
 
 .previewcontentheaderbody{
-    background-color: yellowgreen;
+    /*background-color: yellowgreen;*/
     display: block;
     margin-top: 20px;
 }
@@ -641,7 +701,7 @@ cursor: pointer;
 }
 
 .previewcontentheaderbodynamecontainer{
-    background-color: goldenrod;
+    /*background-color: goldenrod;*/
     padding: 5px 0 0 0;
     width: auto;
     overflow: hidden;
@@ -660,7 +720,7 @@ cursor: pointer;
 }
 
 .previewcontentheaderbodydate{
-    background-color: dimgrey;
+    /*background-color: dimgrey;*/
     /*margin-top: -2px;*/
     color: #333;
     font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
@@ -675,7 +735,7 @@ cursor: pointer;
 }
 
 .previewcontentheaderbodytitle{
-    background-color: wheat;
+    /*background-color: wheat;*/
     margin-top: 55px;
     float: left;
     display: block;
@@ -684,7 +744,7 @@ cursor: pointer;
 }
 
 .previewcontentheaderbodydescription{
-    background-color: lime;
+    /*background-color: lime;*/
     margin-top: 25px;
     float: left;
     height: 200px;
@@ -705,12 +765,12 @@ cursor: pointer;
 }
 
 .buttonsbuttons:hover{
-    background-color: sandybrown;
+    /*background-color: sandybrown;*/
     border-right: 10px solid black;
 }
 
 .buttonsbuttons:visited .buttonsbuttons:active{
-    background-color: sandybrown;
+    /*background-color: sandybrown;*/
     border-right: 10px solid red;
 }
 

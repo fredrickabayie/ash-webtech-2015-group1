@@ -98,6 +98,10 @@ and open the template in the editor.
             function getPreview ( id )
             {
                 $(".previewprompttext").hide();
+                $(".addtaskbutton").fadeOut().hide();
+                $(".newtaskbutton").slideDown().show();
+                $(".updatetaskbutton").slideDown().show();
+                $(".edittaskbutton").slideDown().hide();
                 var theUrl="../controllers/user_controller.php?cmd=1&task_id="+id;
                 var obj = sendRequest ( theUrl );		
                 if ( obj )
@@ -175,6 +179,10 @@ and open the template in the editor.
                 {
                     $(".add").slideDown ( 'slow', function ( )
                     {
+                        $(".addtaskbutton").slideDown().show();
+                        $(".newtaskbutton").slideDown().hide();
+                         $(".updatetaskbutton").slideDown().show();
+                         $(".edittaskbutton").slideDown().hide();
                         $(this).show();
                     });
                     $(".preview").hide();
@@ -238,6 +246,10 @@ and open the template in the editor.
            {
                $ ( ".updatetaskbutton" ).click ( function ( ) 
                {
+                   $(".addtaskbutton").fadeOut().hide();
+                   $(".newtaskbutton").slideDown().show();
+                   $(".edittaskbutton").slideDown().show();
+                   $(".updatetaskbutton").slideDown().hide();
                    var task_id = $ ( ".showpreviewinner2upper" ).text();
                    var task_title = $ ( ".previewcontentheaderbodytitle2" ).text();
                    var task_description = $ ( ".previewcontentheaderbodydescription2" ).text();
@@ -348,7 +360,7 @@ and open the template in the editor.
                         div += "<input class='showcontentdetailsinnertilecheckbox showcontentdetailsinnertilecheckbox2'\n\
                                     value="+ obj.tasks [index].task_id+" name=todelete[] type='checkbox'>";
                         div += "<div class='showcontentdetailsinnertilename'>";
-                        div += "<span>"+obj.tasks [index].user_fname+""+obj.tasks [index].user_sname+"</span>";
+                        div += "<span>"+obj.tasks [index].user_fname+"&nbsp"+obj.tasks [index].user_sname+"</span>";
                         div += "<div class='showcontentdetailsinnertiledelete showcontentdetailsinnertiledelete2' \n\
                                     style='float:right; margin-right:10px'>";
                         div += "<a class='delete' style='padding: 7px' id="+ obj.tasks [index].task_id+"><i id='deleteicon' \n\
@@ -388,23 +400,31 @@ and open the template in the editor.
         
         
         //function to disable right click and show footer
-        $ ( document ).ready ( function ( )
-        {
-            $ ( document ).bind ("contextmenu", function ( event )
-            {
-                $(".footer").slideToggle("fast").show();
-//                event.preventDefault();
-//                $("<div class='custom-menu' style='z-index:1000; position:absolute; padding:2px; border:1px solid black; background-color:#C0C0C0'>\n\
-//                    <ul>\n\
-//                    <li>Refresh</li>\n\
-//                    <li>Logout</li>\n\
-//                    </ul></div>")
-//                    .appendTo("body")
-//                    .css({top: event.pageY, left: event.pageX});
-//                alert("Right Click");
-                     return false;
-            });
-        });
+//        $ ( document ).ready ( function ( )
+//        {
+//            $ ( document ).bind ("contextmenu", function ( event )
+//            {
+//                $(".footer").slideToggle("fast").show();
+////                event.preventDefault();
+////                $("<div class='custom-menu' style='z-index:1000; position:absolute; padding:2px; border:1px solid black; background-color:#C0C0C0'>\n\
+////                    <ul>\n\
+////                    <li>Refresh</li>\n\
+////                    <li>Logout</li>\n\
+////                    </ul></div>")
+////                    .appendTo("body")
+////                    .css({top: event.pageY, left: event.pageX});
+////                alert("Right Click");
+//                     return false;
+//            });
+//        });
+//        
+//        $(function ()
+//        {
+//            $("#mytasks").on("click", function ( )
+//            {
+//                $(document).load("mytasks.php");
+//            });
+//        });
         
         </script>
 
@@ -414,40 +434,9 @@ and open the template in the editor.
         <div class="maincontainer">
             <div class="innercontainer">
                 <div class="header" id="header">
-                    <div class="">
-                        <img id="profileimage" src="..." class="fa fa-user"  style="width: 50px; height: 50px; float: right">
-                    </div>
-                    <div style="height: 50px; width: 5px; float: right; background-color: black; margin: 0px"></div>
-                    
-                    <div style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
-                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
-                            <span>
-                                <i class="fa fa-2x fa-question" style="color: white; padding-top: 8px"></i>
-                            </span>
-                        </button>
-                    </div>
-                     <div style="height: 50px; width: 5px; float: right; background-color: black; margin: 0px"></div>
-                     <div style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
-                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
-                            <span>
-                                <i class="fa fa-2x fa-cog" style="color: white; padding-top: 8px"></i>
-                            </span>
-                        </button>
-                    </div>
-                     <div style="float: left; width: 50px; height: 50px; margin: 0px; text-align: center">
-                        <button style="float: right; width: 50px; height: 50px; margin: 0px; text-align: center">
-                            <span>
-                                <i class="fa fa-2x fa-th" style="color: white; padding-top: 8px"></i>
-                            </span>
-                        </button>
-                    </div>
-                      <div style="float: left; width: 350px; height: 50px; margin: 0px; text-align: center; padding-top: 10px">
-                            <span>
-                                Welcome to SAFE &nbsp;
-                                <?php            
-                                    echo $_SESSION['username'];
-                                ?>
-                            </span>
+                     <?php            
+                        include_once 'header.php';
+                     ?>
                     </div>
                      
                 </div>
@@ -463,11 +452,11 @@ and open the template in the editor.
                                 <div class="leftnavmenuinnerdownnav">
                                     <div>
                                         <button class="buttonsbuttons">
-                                            <span><i class="fa fa-chevron-up">&nbsp;&nbsp;&nbspTasks</i></span>
+                                            <span><i class="fa fa-chevron-up">&nbsp;&nbsp;&nbsp;Tasks</i></span>
                                         </button>
                                     </div>
                                     <div>
-                                        <button class="buttonsbuttons">
+                                        <button class="buttonsbuttons" id="mytasks">
                                             <span><i class="fa fa-book">&nbsp;&nbsp;&nbsp;My Tasks</i></span>
                                         </button>
                                     </div>
@@ -491,24 +480,11 @@ and open the template in the editor.
                     </div>
 
                     <div class="seperator"></div>
-
+                    
                     <div class="showcontent">
-                        <div class="showcontenttop"></div>
-                            <div class="showcontenttoplabel">
-                                Number of tasks&nbsp;<a id="tasknum"></a>
-                            </div>
-
-                            <div class="showcontenttopsearch">
-                                <input class="showcontenttopsearchfield" placeholder="Search" type="text" style="">
-                                <div style="float: right; padding-right: 34px; padding-top: 9px">
-                                    <span><i id="searchicon" class="fa fa-flip-horizontal fa-search"></i></span>
-                                </div>
-                            </div>
-
-                        <div class="showcontentdetails">
-                            <div class="showcontentdetailsinner">
-                            </div>
-                        </div>
+                               <?php
+                                     include_once 'content.php';
+                               ?>
                     </div>
 
                     <div class="seperator2"></div>
@@ -523,22 +499,38 @@ and open the template in the editor.
 
                                     <!--<div class="showpreviewinnercontent">-->
                                     <div class="showpreviewinnercontentheaderinnerbuttons" style="padding-top: 20px">
-                                                  <button id="newtaskbutton" class="newtaskbutton" type="button">
-                                                      <span style="padding-bottom: 7px; padding-top: 7px">
-                                                          <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
-                                                      </span>
-                                                  </button>
-                                                  <button id="deletetaskbutton" class="deletetaskbutton" type="button">
-                                                      <span style="padding-bottom: 7px; padding-top: 7px">
-                                                          <i class="fa fa-2x fa-trash-o"></i>
-                                                      </span>
-                                                  </button>
-                                                  <button class="updatetaskbutton" type="button">
-                                                      <span style="padding-bottom: 7px; padding-top: 7px">
-                                                          <i class="fa fa-2x fa-flip-horizontal fa-pencil"></i>
-                                                      </span>
-                                                  </button>
-                                        </div>
+                                                                                
+                                            <button id="addtaskbutton" onclick="insertTask ( )" title="New task" class="addtaskbutton" type="button">
+                                                  <span style="padding-bottom: 7px; padding-top: 7px">
+                                                      <i id="addtaskicon" class="fa fa-2x fa-code"></i>
+                                                  </span>
+                                              </button>
+                                        
+                                             <button id="newtaskbutton" title="New task" class="newtaskbutton" type="button">
+                                                  <span style="padding-bottom: 7px; padding-top: 7px">
+                                                      <i id="newtaskicon" class="fa fa-2x fa-plus"></i>
+                                                  </span>
+                                              </button>
+                                        
+                                              <button id="deletetaskbutton" title="Delete Tasks" class="deletetaskbutton" type="button">
+                                                  <span style="padding-bottom: 7px; padding-top: 7px">
+                                                      <i class="fa fa-2x fa-trash-o"></i>
+                                                  </span>
+                                              </button>
+                                        
+                                              <button class="updatetaskbutton" title="Edit Task" type="button">
+                                                  <span style="padding-bottom: 7px; padding-top: 7px">
+                                                      <i class="fa fa-2x fa-flip-horizontal fa-pencil"></i>
+                                                  </span>
+                                              </button>
+                                        
+                                              <button id="edittaskbutton" onclick="editTask ( )" title="New task" class="edittaskbutton" type="button">
+                                                  <span style="padding-bottom: 7px; padding-top: 7px">
+                                                    <i id="edittaskicon" class="fa fa-2x fa-flip-horizontal fa-pencil-square"></i>
+                                                  </span>
+                                              </button>
+                                        
+                                    </div>
 
                                         <?php
                                         include_once 'preview.php';
@@ -547,7 +539,7 @@ and open the template in the editor.
                                         ?>
                                     
                                     <div class="previewprompttext" style="width: 100%; height: 100%; padding-top: 400px;
-                                        color: white; text-align: center">
+                                         text-align: center">
                                         Please select a task to preview its details
                                     </div>
                                     
