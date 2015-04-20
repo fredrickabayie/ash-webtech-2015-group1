@@ -40,18 +40,26 @@
         </style>
         
         <div class="add" id="add" style="display: none">
-            <div style="margin-top: 90px">
+             <div style="margin-top: 90px">
+            <select id="collaborator" class="collaborator">
+               
+            </select>
+        </div><br>
+         <div>
+             Priority:&nbsp;<select id="priority" class="priority">
+                <option value="hight">High</option>
+                <option value="normal">Normal</option>
+                <option value="low">Low</option>
+            </select>
+        </div><br>
+            <div >
             <input class="task_title" id="task_title" name="task_title" type="text" placeholder="Add a task title">
         </div><br> 
         <div>
             <textarea class="task_description" id="task_description" name="task_description" type="text" placeholder="task description" required="">
             </textarea>
         </div><br>
-        <div>
-            <select id="collaborator" class="collaborator">
-               
-            </select>
-        </div><br>
+       
 <!--        <div>
             <button class="add_button" id="add_button" type="button" name="add_button" onclick="insertTask ( )">Insert</button>
         </div><br>-->

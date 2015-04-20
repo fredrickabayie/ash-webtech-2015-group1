@@ -500,7 +500,7 @@ and open the template in the editor.
                                     <!--<div class="showpreviewinnercontent">-->
                                     <div class="showpreviewinnercontentheaderinnerbuttons" style="padding-top: 20px">
                                                                                 
-                                            <button id="addtaskbutton" onclick="insertTask ( )" title="New task" class="addtaskbutton" type="button">
+                                            <button id="addtaskbutton" onclick="insertTask ( )" title="Submit" class="addtaskbutton" type="button">
                                                   <span style="padding-bottom: 7px; padding-top: 7px">
                                                       <i id="addtaskicon" class="fa fa-2x fa-code"></i>
                                                   </span>
@@ -524,7 +524,7 @@ and open the template in the editor.
                                                   </span>
                                               </button>
                                         
-                                              <button id="edittaskbutton" onclick="editTask ( )" title="New task" class="edittaskbutton" type="button">
+                                              <button id="edittaskbutton" onclick="editTask ( )" title="Update" class="edittaskbutton" type="button">
                                                   <span style="padding-bottom: 7px; padding-top: 7px">
                                                     <i id="edittaskicon" class="fa fa-2x fa-flip-horizontal fa-pencil-square"></i>
                                                   </span>
