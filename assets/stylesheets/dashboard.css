@@ -385,6 +385,214 @@ cursor: pointer;
     font-weight: normal;
 }
 
+
+/*Mytask css*/
+.showcontenttopmy{
+    /*background-color: lightsalmon;*/
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: auto;
+    left: 0px;
+    height: 7px;
+    width: auto;
+}
+
+.showcontenttoplabelmy{
+    /*background-color: lightgoldenrodyellow;*/
+    margin-left: 0;
+    padding-top: 7px;
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    bottom: auto;
+    left: 0px;
+    height: 33px;
+    width: auto;
+}
+
+.showcontenttopsearchmy{
+    /*background-color: lightseagreen;*/
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    bottom: auto;
+    left: 0px;
+    height: 37px;
+    width: auto;
+}
+
+.showcontenttopsearchfieldmy{
+    padding-left: 5px;
+    margin-left: 40px;
+    margin-right: 10px;
+    margin-top: 3px;
+    width: 470px;
+    height: 30px;
+    position: absolute;
+    display: none;
+}
+
+.showcontentdetailsmy{
+    /*background-color: lightskyblue;*/
+    position: absolute;
+    top: 77px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: auto;
+    width: auto;
+}
+
+.showcontentdetailsinnermy{
+    /*background-color: chocolate;*/
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.showcontentdetailsinnermy::-webkit-scrollbar{
+    height: 18px;
+    width: 18px;
+}
+
+.showcontentdetailsinnermy::-webkit-scrollbar-thumb{
+    border-radius: 9px;
+border: solid 6px #fff;
+background-color: #c8c8c8;
+}
+
+.showcontentdetailsinnermy::-webkit-scrollbar-button{
+    background-color: #fff;
+background-repeat: no-repeat;
+cursor: pointer;
+}
+
+.showcontentdetailsinnermy::-webkit-scrollbar-track{
+    background-color: #fff;
+}
+
+.showcontentdetailsinnermy::-webkit-scrollbar-corner{
+    background-color: #fff;
+}
+
+.showcontentdetailsinnertilemy{
+    /*background-color: olive;*/
+    width: 556px;
+    height: 66px;
+    position: relative;
+    cursor: default;
+    outline: none;
+}
+
+/*:hover{
+    
+}*/
+
+.showcontentdetailsinnertilemy:hover .showcontentdetailsinnertilecheckboxmy{
+    background-color: red;
+    opacity: 1;
+    filter: alpha ( opacity = 1);
+    border: 0px;
+}
+
+.showcontentdetailsinnertilemy:hover .showcontentdetailsinnertiledeletemy{
+     opacity: 1;
+    filter: alpha ( opacity = 1);
+/*        width: 20px;
+    height: 20px;*/
+}
+
+.showcontentdetailsinnertile2my:hover{
+    background-color: lightgray
+}
+
+.showcontentdetailsinnertilecheckboxmy{
+    position: absolute;
+    outline: 0;
+    z-index: 2;
+    top: 5px;
+    left: 6px;
+    cursor: pointer;
+    border-width: 0;
+    padding: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.showcontentdetailsinnertilenamemy{
+    /*background-color: seashell;*/
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 5px 0 0 40px;
+    height: 23px;
+    color: #333;
+    font-family: "wf_segoe-ui_semilight", "Segoe UI Semilight", "Segoe WP Semilight", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.showcontentdetailsinnertiledeletemy{
+    /*background-color: blue;*/
+/*    width: 20px;
+    height: 20px;*/
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha ( opacity=0);
+}
+
+.showcontentdetailsinnertiledeletemy:hover{
+    /*background-color: violet*/
+}
+
+.showcontentdetailsinnertiletitlemy{
+    /*background-color: silver;*/
+    padding-left: 40px;
+    position: relative;
+    left: 0;
+    /*padding: 0;*/
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin: -1px 0 0 0;
+    height: 17px;
+    color: #333;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.showcontentdetailsinnertiledescriptionmy{
+    /*background-color: rosybrown;*/
+    margin: -2px 45px 0 23px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    left: 0;
+    height: 23px;
+    padding-left: 17px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    /*padding: 0;*/
+    line-height: normal;
+    white-space: nowrap;
+    pointer-events: none;
+    color: #333;
+    font-family: "wf_segoe-ui_normal", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/*End of mytask css*/
+
 .seperator2{
     position: absolute;
     top: 0px;

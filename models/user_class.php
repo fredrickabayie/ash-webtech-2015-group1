@@ -54,18 +54,20 @@ class User extends adb
     }//end of add_new_task
         
     
-//    /**
-//     * Function to check nurse_id and nurse_password
-//     * @return type Returning the result of the query
-//     */
-//    function user_display_all_tasks ( )
-//    {
-//       $display_query = "select task_id, task_description, task_title, user_fname, user_sname
-//                                from system_tasks
-//                                join system_users
-//                                on system_tasks.user_id=system_users.user_id order by task_id desc"; 
-//       return $this->query ( $display_query );
-//    }//admin_display_all_tasks ( )
+    /**
+     * Function to display created tasks
+     * @return type Returning the result of the query
+     */
+    function user_display_created_tasks ( $user_id )
+    {
+       $display_query = "select task_id, task_description, task_title, user_fname, user_sname
+                                from system_tasks
+                                join system_users
+                                on system_tasks.user_id=system_users.user_id 
+                                and system_tasks.user_id='$user_id'
+                                order by task_id desc"; 
+       return $this->query ( $display_query );
+    }//admin_display_all_tasks ( )
     
     
    /**
@@ -171,6 +173,24 @@ class User extends adb
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id
                                 and system_tasks.task_collaborator = '$user_id'
+                                and system_tasks.task_title like '%$search_text%'
+                                order by task_id desc";
+        return $this->query ( $search_query );
+    }//end of admin_search_task()
+    
+    
+    /**
+     * Function to search for a task
+     * @param type $search_text The text to be searched
+     * @return type Returning the result obtained
+     */
+    function user_search_created_task ( $search_text, $user_id )
+    {
+        $search_query = "select task_id, task_description, task_title, user_fname, user_sname
+                                from system_tasks
+                                join system_users
+                                on system_tasks.user_id=system_users.user_id
+                                and system_tasks.user_id = '$user_id'
                                 and system_tasks.task_title like '%$search_text%'
                                 order by task_id desc";
         return $this->query ( $search_query );

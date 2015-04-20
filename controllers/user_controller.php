@@ -41,6 +41,14 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
         case 9:
             select_collaborator ( );
             break;
+        
+        case 10:
+            display_created_task ( );
+            break;
+        
+        case 11:
+            search_created_tasks ( );
+            break;
          
         default:
             echo '{"result":0,message:"unknown command"}';
@@ -340,4 +348,72 @@ function  select_collaborator ( )
             echo '{"result":0, "message":"failed to load collaborators"}';
         }
     }
-}
+}//end of select_collaborator
+
+
+/**
+ * Function to display created task by user
+ */
+function display_created_task ( )
+{
+    include '../models/user_class.php';
+    $obj = new User ( );
+    session_start();
+    $user_id = $_SESSION['user_id'];
+       
+    if ( $obj->user_display_created_tasks ( $user_id ) )
+    {
+        $row = $obj->fetch ( );
+        echo '{"result":1, "tasks": [';
+        while ( $row )
+        {
+            echo '{"task_id": "'.$row ["task_id"].'", "task_title": "'.$row ["task_title"].'", 
+            "task_description": "'.$row ["task_description"].'",  "user_sname": "'.$row ["user_sname"].'",
+            "user_fname": "'.$row ["user_fname"].'"}';
+            
+            if ($row = $obj->fetch ( ) )   {
+                    echo ',';
+            }
+        }
+            echo ']}';
+    }   else
+    {
+        echo '{"result":0,"message": "An error occured for select product."}';
+    }
+}//end of display_created_task()
+
+
+/**
+ * Function for user to search created tasks
+ */
+function search_created_tasks ( )
+{
+     if ( isset ( $_REQUEST [ 'search_text' ] ) )
+    {
+        include '../models/user_class.php';
+        
+        $search_text = $_REQUEST [ 'search_text' ];
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        
+        $obj = new User ( );
+        
+        if ( $obj->user_search_created_task ( $search_text, $user_id ) )
+        {
+            $row = $obj->fetch ( );
+            echo '{"result":1, "tasks": [';
+            while ( $row )
+            {
+                echo json_encode ( $row );
+                $row = $obj->fetch ( );
+                if ( $row )   {
+                        echo ',';
+                }
+            }
+                echo ']}';
+        }   else
+        {
+            echo '{"result":0,"message": "An error occured for select product."}';
+        }
+    }
+}//end of search_created_tasks()

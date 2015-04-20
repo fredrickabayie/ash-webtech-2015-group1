@@ -1,6 +1,6 @@
 <div class="headercontent">
 <div class="">
-    <img id="profileimage" src="..." class="fa fa-user"  style="width: 50px; height: 50px; float: right">
+    <img id="profileimage" src="" class="fa fa-user"  style="width: 50px; height: 50px; float: right">
 </div>
 <div style="height: 50px; width: 5px; float: right; background-color: black; margin: 0px"></div>
 
