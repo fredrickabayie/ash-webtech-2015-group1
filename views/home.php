@@ -102,7 +102,6 @@ and open the template in the editor.
 //            });
 }
 
-
                 //function to get description of task
             function getPreview ( id )
             {
@@ -567,8 +566,14 @@ and open the template in the editor.
 
                             <div class="leftnavmenuinnerdown">
                                 <div class="leftnavmenuinnerdownnav">
-                                    <div>
+                                     <div>
                                         <button class="buttonsbuttons" onclick="display_assigned()">
+                                            <span><i class="fa fa-2x fa-folder-o"></i>&nbsp;&nbsp;&nbsp;Folder</span>
+                                            
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="buttonsbuttons" >
                                             <span><i class="fa fa-chevron-up">&nbsp;&nbsp;&nbsp;Assigned Tasks</i></span>
                                         </button>
                                     </div>

@@ -417,3 +417,17 @@ function search_created_tasks ( )
         }
     }
 }//end of search_created_tasks()
+
+
+function sendMail ( )
+{
+    $admin = "chok.real@gmail.com";
+    $mail = "fredrick.abayie@ashesi.edu.gh";
+    $subject = "Mail sending first test";
+    $comment = "good or bad";
+    
+    if ( mail($admin, $subject,  $comment, 'From'.$mail) )
+    {
+      echo '{"success"}';
+    }
+}
