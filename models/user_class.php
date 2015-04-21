@@ -60,7 +60,8 @@ class User extends adb
      */
     function user_display_created_tasks ( $user_id )
     {
-       $display_query = "select task_id, task_description, task_title, user_fname, user_sname
+       $display_query = "select task_id, task_description, task_title, user_fname, user_sname,
+                                task_start_date, task_end_date
                                 from system_tasks
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id 
@@ -76,7 +77,8 @@ class User extends adb
      */
     function user_display_assigned_tasks ( $user_id )
     {
-       $display_query = "select task_id, task_description, task_title, user_fname, user_sname
+       $display_query = "select task_id, task_description, task_title, user_fname, user_sname,
+                                task_start_date, task_end_date
                                 from system_tasks
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id 
@@ -94,7 +96,7 @@ class User extends adb
     function user_preview_task ( $task_id )
     {
         $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, 
-                                    system_tasks.user_id, path, task_collaborator
+                                    system_tasks.user_id, path, task_collaborator, task_start_date, task_end_date
                                     from system_tasks
                                     join system_users
                                     on system_users.user_id=system_tasks.user_id and system_tasks.task_id='$task_id'";
@@ -119,10 +121,13 @@ class User extends adb
      * @param type $admin_id The user id of the admin
      * @return type Returning the result of the query
      */
-    function user_add_new_task ( $task_title, $task_description, $user_id, $task_collaborator )
+    function user_add_new_task ( $task_title, $task_description, $user_id, $task_collaborator,
+                                                    $task_start_date, $task_end_date )
     {
-        $add_query = "insert into `system_tasks` ( `task_title`, `task_description`, `user_id`, `task_collaborator` )"
-                . "values ( '$task_title', '$task_description', '$user_id', '$task_collaborator' )";
+        $add_query = "insert into `system_tasks` ( `task_title`, `task_description`, `user_id`,"
+                . " `task_collaborator`, `task_start_date`, `task_end_date` )"
+                . "values ( '$task_title', '$task_description', '$user_id', '$task_collaborator', "
+                . "'$task_start_date', '$task_end_date' )";
         return $this->query ( $add_query );        
     }//end of admin_add_new_task ( $user_id )
     
@@ -151,11 +156,14 @@ class User extends adb
      * @param type $task_end_date
      * @return type Returning the result of the query
      */
-    function user_update_task ( $task_id, $task_title, $task_description, $task_collaborator )
+    function user_update_task ( $task_id, $task_title, $task_description, $task_collaborator,
+                                                $task_start_date, $task_end_date )
     {
         $update_query = "update system_tasks set system_tasks.task_title='$task_title',
                                    system_tasks.task_description='$task_description',
-                                   system_tasks.task_collaborator='$task_collaborator'
+                                   system_tasks.task_collaborator='$task_collaborator',
+                                   system_tasks.task_start_date='$task_start_date',
+                                   system_tasks.task_end_date='$task_end_date'
                                    where system_tasks.task_id='$task_id'";
         return $this->query ( $update_query );
     }//end of update or edit task
@@ -168,7 +176,8 @@ class User extends adb
      */
     function user_search_task ( $search_text, $user_id )
     {
-        $search_query = "select task_id, task_description, task_title, user_fname, user_sname
+        $search_query = "select task_id, task_description, task_title, user_fname, user_sname,
+                                task_start_date, task_end_date
                                 from system_tasks
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id
@@ -186,7 +195,8 @@ class User extends adb
      */
     function user_search_created_task ( $search_text, $user_id )
     {
-        $search_query = "select task_id, task_description, task_title, user_fname, user_sname
+        $search_query = "select task_id, task_description, task_title, user_fname, user_sname,
+                                task_start_date, task_end_date
                                 from system_tasks
                                 join system_users
                                 on system_tasks.user_id=system_users.user_id

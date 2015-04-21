@@ -39,9 +39,9 @@
 }
         </style>
         
-        <div class="add" id="add" style="display: none">
+         <div class="add" id="add" style="display: none">
              <div style="margin-top: 90px">
-            <select id="collaborator" class="collaborator">
+                 Select Collaborator: <select id="collaborator" class="collaborator" style="width:140px; height: 30px;">
                
             </select>
         </div><br>
@@ -52,12 +52,17 @@
                 <option value="low">Low</option>
             </select>
         </div><br>
-            <div >
-            <input class="task_title" id="task_title" name="task_title" type="text" placeholder="Add a task title">
-        </div><br> 
+            <div>
+               <input class="task_title" id="task_title" name="task_title" type="text" placeholder="Add a task title" required="">
+            </div><br>
         <div>
             <textarea class="task_description" id="task_description" name="task_description" type="text" placeholder="task description" required="">
             </textarea>
+        </div><br>
+        <div>
+            Start date: <input style="width:140px; height: 30px;" id="task_start_date" name="task_start_date" type="date" placeholder="start date" required="">
+   
+            End date: <input style="width:140px; height: 30px;" id="task_end_date" name="task_end_date" type="date" placeholder="end date" required="">
         </div><br>
        
 <!--        <div>

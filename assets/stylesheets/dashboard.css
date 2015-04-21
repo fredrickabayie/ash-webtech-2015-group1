@@ -1233,7 +1233,8 @@ cursor: auto;
     width: 370px;
     height: 40px;
     display: inline-block;
-    background-color: #6496c8;
+    /*background-color: #6496c8;*/
+    background-color: green;
     color: white;
     border-radius: 5px;
     margin-top: 40px;
@@ -1245,7 +1246,7 @@ cursor: auto;
 #loginbutton:hover
 {
     cursor: pointer;
-   background-color: lightblue;
+   background-color: lightgreen;
 }
 
 #image{
@@ -1259,7 +1260,7 @@ cursor: auto;
     visibility: visible;
     display: block;
     background-color: rgb(235, 60, 0);
-     background: url("../..//assets/img/illustration.jpg") no-repeat fixed;
+     background: url("../..//assets/img/nurselogin.jpg") no-repeat fixed;
     /*background: #ffffff url(../assets/img/illustration.jpg) ;*/
 }
 
