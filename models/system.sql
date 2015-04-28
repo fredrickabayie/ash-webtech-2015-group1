@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2015 at 04:39 AM
+-- Generation Time: Apr 22, 2015 at 02:59 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -54,42 +54,50 @@ CREATE TABLE IF NOT EXISTS `system_tasks` (
   `task_title` varchar(255) NOT NULL,
   `task_description` longtext NOT NULL,
   `user_id` int(36) NOT NULL,
-  `task_collaborator` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=latin1;
+  `task_collaborator` int(10) NOT NULL,
+  `task_start_date` date NOT NULL,
+  `task_end_date` date NOT NULL,
+  `task_status` enum('ongoing','completed') NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `system_tasks`
 --
 
-INSERT INTO `system_tasks` (`task_id`, `task_title`, `task_description`, `user_id`, `task_collaborator`) VALUES
-(1, 'Malaria Research', 'Africa needs to discover new frontiers in the course of fighting poverty amongst her people.  Ghana, the gateway to Africa, must lead the way, and education of these street and vulnerable children is the key.  SCEF believes that street children have a right to a dignified childhood through which they are given the opportunity to receive an education and explore their voice and their rights as human beings', 1, 2),
-(2, 'Blood Diseases', 'Recently, especially following the pressing of sexual abuse charges against a James Town resident on three separate accounts, SCEF has identified sexual abuse as a major challenge plaguing street girls and women in James Town. We have begun sexual abuse awareness workshops with our female students to inform them of their rights regarding their own bodies and safety', 3, 1),
-(3, 'Ebola Research', 'This is just a quick announcement on what to do should the network go down during the Easter break. Please contact Kingston Deladem Kofi Coker class of 2015 or Momodou K. Sowe class of 2017. They will both be on campus throughout the break and they know what to check before contacting Segla or myself.', 2, 4),
-(4, 'Aids Epidemic', 'As you should know, Friday April 3 and Monday April 6 are both public holidays and classes will not be in session, nor will the administration offices be open.  The campus however, will remain open with limited services. The campus however, will remain open with limited services. Classes will resume on Tuesday April 7. The application process is very simple, apply now', 4, 3),
-(57, 'sdfgsdf', 'testing', 1, 4),
-(77, 'sdfgsdg', 'hellllo test ooo', 2, 0),
-(140, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 3, 2),
-(141, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 4, 3),
-(142, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 3),
-(143, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 3, 4),
-(144, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 4),
-(145, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 2, 4),
-(146, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 3),
-(147, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 4, 2),
-(150, 'jdhfsjl', 'jshdfljghsdlg            ', 1, 3),
-(152, 'jdhfsjl', 'jshdfljghsdlg            ', 1, 3),
-(153, 'jdhfsjl', 'jshdfljghsdlg            ', 4, 4),
-(157, 'ntrfnnssndnsd', 'nsdnsdnsdrnddn            ', 2, 3),
-(160, 'Oh yeah wate', 'testing two', 2, 3),
-(161, 'xkfjhlsgj', 'sjhfgskdjflgsd            ', 3, 2),
-(162, 'xkfjhlsgj', 'sjhfgskdjflgsd            ', 2, 1),
-(163, 'skfjhglskfg', 'kgsjdflgskjhfdlkgsd            ', 2, 4),
-(164, 'Dave', 'creaed this             ', 2, 4),
-(165, 'Dave', 'created another            ', 2, 3),
-(166, 'Joe', 'created            ', 4, 2),
-(167, 'Joe', 'created this            ', 4, 3),
-(169, 'new button', 'for the top there            ', 2, 3),
-(170, 'add button for the top', 'top there            ', 2, 3);
+INSERT INTO `system_tasks` (`task_id`, `task_title`, `task_description`, `user_id`, `task_collaborator`, `task_start_date`, `task_end_date`, `task_status`) VALUES
+(1, 'Malaria Research', 'Africa needs to discover new frontiers in the course of fighting poverty amongst her people.  Ghana, the gateway to Africa, must lead the way, and education of these street and vulnerable children is the key.  SCEF believes that street children have a right to a dignified childhood through which they are given the opportunity to receive an education and explore their voice and their rights as human beings', 1, 2, '0000-00-00', '0000-00-00', 'completed'),
+(2, 'Blood Diseases', 'Recently, especially following the pressing of sexual abuse charges against a James Town resident on three separate accounts, SCEF has identified sexual abuse as a major challenge plaguing street girls and women in James Town. We have begun sexual abuse awareness workshops with our female students to inform them of their rights regarding their own bodies and safety.', 3, 0, '0000-00-00', '0000-00-00', 'completed'),
+(3, 'Ebola Research', 'This is just a quick announcement on what to do should the network go down during the Easter break. Please contact Kingston Deladem Kofi Coker class of 2015 or Momodou K. Sowe class of 2017. They will both be on campus throughout the break and they know what to check before contacting Segla or myself.', 2, 4, '2015-04-01', '2015-04-21', 'completed'),
+(4, 'Aids Epidemic', 'As you should know, Friday April 3 and Monday April 6 are both public holidays and classes will not be in session, nor will the administration offices be open.  The campus however, will remain open with limited services. The campus however, will remain open with limited services. Classes will resume on Tuesday April 7. The application process is very simple, apply now', 4, 3, '0000-00-00', '0000-00-00', 'ongoing'),
+(57, 'sdfgsdf', 'testing', 1, 4, '0000-00-00', '0000-00-00', 'ongoing'),
+(77, 'lololol', 'hellllo test ooo...', 2, 0, '0000-00-00', '0000-00-00', 'completed'),
+(140, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 3, 2, '0000-00-00', '0000-00-00', 'ongoing'),
+(141, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 4, 3, '0000-00-00', '0000-00-00', 'completed'),
+(142, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 3, '0000-00-00', '0000-00-00', 'ongoing'),
+(143, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 3, 4, '0000-00-00', '0000-00-00', 'ongoing'),
+(144, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 4, '0000-00-00', '0000-00-00', 'completed'),
+(145, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 2, 4, '0000-00-00', '0000-00-00', 'completed'),
+(146, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 1, 3, '0000-00-00', '0000-00-00', 'completed'),
+(147, 'tdkjfthlskdf', 'lkdjfhlkgjhdflghdlfkglsdkjfhg sldkfjhgslkdjfglskdjflgsrg            ', 4, 2, '0000-00-00', '0000-00-00', 'completed'),
+(150, 'jdhfsjl', 'jshdfljghsdlg            ', 1, 3, '0000-00-00', '0000-00-00', 'completed'),
+(153, 'jdhfsjl', 'jshdfljghsdlg            ', 4, 4, '0000-00-00', '0000-00-00', 'completed'),
+(160, 'Oh yeah wate', 'testing two one one', 2, 0, '0000-00-00', '0000-00-00', 'ongoing'),
+(161, 'xkfjhlsgj', 'sjhfgskdjflgsd            ', 3, 2, '0000-00-00', '0000-00-00', 'completed'),
+(162, 'xkfjhlsgj', 'sjhfgskdjflgsd            ', 2, 1, '0000-00-00', '0000-00-00', 'ongoing'),
+(163, 'skfjhglskfg', 'kgsjdflgskjhfdlkgsd            ', 2, 4, '0000-00-00', '0000-00-00', 'completed'),
+(164, 'Dave', 'creaed this             ', 2, 4, '0000-00-00', '0000-00-00', 'ongoing'),
+(165, 'Dave', 'created another            ', 2, 3, '0000-00-00', '0000-00-00', 'completed'),
+(166, 'Joe', 'created            ', 4, 2, '0000-00-00', '0000-00-00', 'ongoing'),
+(167, 'Joe', 'created this            ', 4, 3, '0000-00-00', '0000-00-00', 'ongoing'),
+(171, 'trying', 'email sending            ', 2, 4, '0000-00-00', '0000-00-00', 'ongoing'),
+(179, 'ghvfhmgmvchgcmhg', 'gfdmgdmhgfdjmhgfmchgmfhgc            ', 3, 4, '0000-00-00', '0000-00-00', 'completed'),
+(180, 'ssfdsfg', 'sdfgsdfg            ', 2, 3, '2015-04-21', '2015-04-24', 'completed'),
+(181, 'adfgsdf', 'sdfgsdfg            ', 2, 3, '2015-04-21', '2015-04-25', 'completed'),
+(184, 'srgtwhrth', 'fghdfhgdfg            ', 2, 4, '2015-04-01', '2015-04-17', 'ongoing'),
+(185, 'yikjkgjrdk', 'ythjfhjkfhjkfhjkhjk            ', 2, 3, '2015-04-18', '2015-04-08', 'ongoing'),
+(186, 'iulhjghjk', '            ghjkgjkghjkghjk', 2, 3, '2015-04-17', '2015-04-26', 'ongoing'),
+(187, 'sjdfgsjg', 'jhsdjfbgsljdbglsjg            ', 2, 3, '2015-04-10', '2015-04-16', 'ongoing'),
+(188, 'ryuryuryu', 'teyjryjukrykur            ', 2, 3, '2015-04-21', '2015-04-17', 'ongoing');
 
 -- --------------------------------------------------------
 
@@ -151,7 +159,7 @@ MODIFY `user_id` int(36) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `system_tasks`
 --
 ALTER TABLE `system_tasks`
-MODIFY `task_id` int(36) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=171;
+MODIFY `task_id` int(36) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=189;
 --
 -- AUTO_INCREMENT for table `system_users`
 --

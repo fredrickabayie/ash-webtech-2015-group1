@@ -15,7 +15,8 @@
                         </div>
                         <div class="previewcontentheaderbodydate">
                             <span style="padding-left: 20px" class="previewcontentheaderbodydate2">Date</span></br>
-                            <span style="padding-left: 20px" class="previewcontentheaderbodydate3">Date</span>
+                            <span style="padding-left: 20px" class="previewcontentheaderbodydate3">Date</span></br>
+                            <span style="padding-left: 20px" class="previewcontentheaderbodystatus">Status</span>
                         </div>
                          <div class="previewcontentheaderbodycollaborator">
                             <span style="padding-left: 20px" class="previewcontentheaderbodycollaborator2">Collaborator</span>

@@ -51,7 +51,7 @@ if ( isset ( $_REQUEST [ 'cmd' ] ) )
             break;
          
         default:
-            echo '{"result":0,message:"unknown command"}';
+            echo '{"result":0,status:"unknown command"}';
             break;
     }//end of switch
     
@@ -83,12 +83,13 @@ function task_preview ( )
                          . '"task_collaborator":"' .$row['task_collaborator'].'",'
                          . '"task_start_date":"' .$row['task_start_date'].'",'
                          . '"task_end_date":"' .$row['task_end_date'].'",'
+                         . '"task_status":"' .$row['task_status'].'",'
                        . '"task_description":"' .$row['task_description'].'"}';
             }
         }
         else
         {
-            echo '{"result":0, "message":"Failed to load the preview"}';
+            echo '{"result":0, "status":"Failed to load the preview"}';
         }
     }
 }//end of task_preview()
@@ -121,7 +122,7 @@ function display_tasks ( )
             echo ']}';
     }   else
     {
-        echo '{"result":0,"message": "An error occured for select product."}';
+        echo '{"result":0,"status": "An error occured for select product."}';
     }
 }//end of display_all_tasks()
 
@@ -246,7 +247,7 @@ function search_task ( )
                 echo ']}';
         }   else
         {
-            echo '{"result":0,"message": "An error occured for select product."}';
+            echo '{"result":0,"status": "An error occured for select product."}';
         }
     }
 }//end of search_task()
@@ -311,17 +312,17 @@ function delete_tasks ( )
         {
             if ( $obj->user_delete_task ( $delete_id ) )
             {
-                echo '{"result":1, "message": "Deleted"}';
+                echo '{"result":1, "status": "Deleted"}';
             }
             else
             {
-                echo '{"result":0, "message":"Not Deleted"}';
+                echo '{"result":0, "status":"Not Deleted"}';
             }
         }//end of foreach        
     }
     else
     {
-        echo '{"result":0, "message":"Not Deleted"}';
+        echo '{"result":0, "status":"Not Deleted"}';
     }
 }//end of delete_tasks
 
@@ -355,7 +356,7 @@ function  select_collaborator ( )
         }
         else
         {
-            echo '{"result":0, "message":"failed to load collaborators"}';
+            echo '{"result":0, "status":"failed to load collaborators"}';
         }
     }
 }//end of select_collaborator
@@ -388,7 +389,7 @@ function display_created_task ( )
             echo ']}';
     }   else
     {
-        echo '{"result":0,"message": "An error occured for select product."}';
+        echo '{"result":0,"status": "An error occured for select product."}';
     }
 }//end of display_created_task()
 
@@ -423,7 +424,7 @@ function search_created_tasks ( )
                 echo ']}';
         }   else
         {
-            echo '{"result":0,"message": "An error occured for select product."}';
+            echo '{"result":0,"status": "An error occured for select product."}';
         }
     }
 }//end of search_created_tasks()

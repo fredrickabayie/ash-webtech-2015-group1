@@ -108,7 +108,7 @@ and open the template in the editor.
 //                        $ ( "#divStatus" ).css ( "backgroundColor", "red" );
                 }
 
-                timer = setTimeout ( '(this)', 1000 );
+                timer = setTimeout ( '', 1000 );
 //            });
 }
 
@@ -130,13 +130,14 @@ and open the template in the editor.
                     });             
 
                     $(".showpreviewinnercontentheaderimage img").attr( "src", obj.user_picture );
-                    $(".previewcontentheaderbodyname2").text( obj.user_fname +" "+ obj.user_sname );
-                    $(".previewcontentheaderbodytitle2").text ( obj.task_title );
-                    $(".previewcontentheaderbodydescription2").text ( obj.task_description );
-                    $(".previewcontentheaderbodycollaborator2").text ( obj.task_collaborator );
-                    $ ( ".showpreviewinner2upper").text ( obj.task_id );
-                    $(".previewcontentheaderbodydate2").text("Date start "+ obj.task_start_date );
-                    $(".previewcontentheaderbodydate3").text("Date end: "+ obj.task_end_date );
+                    $(".previewcontentheaderbodyname2").html( obj.user_fname +" "+ obj.user_sname );
+                    $(".previewcontentheaderbodytitle2").html ( obj.task_title );
+                    $(".previewcontentheaderbodydescription2").html ( obj.task_description );
+                    $(".previewcontentheaderbodycollaborator2").html ( obj.task_collaborator );
+                    $ ( ".showpreviewinner2upper").html ( obj.task_id );
+                    $(".previewcontentheaderbodydate2").html("Date start:&nbsp "+ obj.task_start_date );
+                    $(".previewcontentheaderbodydate3").html("Date end:&nbsp "+ obj.task_end_date );
+                    $(".previewcontentheaderbodystatus").html("Status:&nbsp " +obj.task_status );
 
                     console.log(obj.task_title);
                     console.log(obj.task_description);
@@ -248,11 +249,11 @@ and open the template in the editor.
 //                    var obj = sendRequest ( url ); 
                     if ( obj.result === 1 )
                     {
-                        alert ("Deleted");
+                       $(".notifications").css("color", "darkgreen").text( "Deleted" );
                     }
                     else
                     {
-                        alert ("Not deleted");
+                        $(".notifications").css("color", "red").text( "Failed to delete" );
                     }
                 });
             });
@@ -299,7 +300,7 @@ and open the template in the editor.
                var obj = sendRequest ( url );		
                 if ( obj.result === 1)
                 {
-                       return $(".leftnavmenuinnernotificationinner").text( obj.status );
+                       return $(".notifications").css("color", "darkgreen").text( obj.status );
                        window.location.reload(true);
                 }
            }//end of deleteTask
@@ -323,14 +324,13 @@ and open the template in the editor.
 
                 var obj = sendRequest ( url );
 
-                if ( obj.status === 1)
+                if ( obj.result === 1)
                 {
-                     $(".leftnavmenuinnernotificationinner").text( obj.status );
+                     $(".notifications").css("color", "darkgreen").text( obj.status );
                 }
                 else
                 {
-//                    $("#divStatus").text(obj.status);
-//                     $("#divStatus").css("backgroundColor", "red");
+                    $(".notifications").css("color", "red").text( obj.status );
                     return false;                    
                 }
         }//end of insertTask
@@ -351,12 +351,11 @@ and open the template in the editor.
 
                 if ( obj.status === 1)
                 {
-//                     $("#divStatus").text(obj.status);
+                    $(".notifications").css("color", "darkgreen").text( obj.status );
                 }
                 else
                 {
-//                    $("#divStatus").text(obj.status);
-//                    $("#divStatus").css("backgroundColor", "red");
+                    $(".notifications").css("color", "red").text( obj.status );
                     return false;                    
                 }
         }
@@ -399,12 +398,12 @@ and open the template in the editor.
                     $ ( ".showcontentdetailsinnertile" ).slideDown ( 'slow' );
                     $ ( ".showcontentdetailsinner" ).html ( div );
 
-//                     $ ( "#divStatus" ).text ( "Found " + obj.products.length + " results" );
+                    $(".notifications").css("color", "darkgreen").text( obj.status );
                 }
                 else
                 {
 //                        $ ( "#divStatus" ).text ( obj.message );
-//                        $ ( "#divStatus" ).css ( "backgroundColor", "red" );
+                       $(".notifications").css("color", "red").text( obj.status );
                 }
             });
         });
@@ -521,7 +520,7 @@ and open the template in the editor.
                 else
                 {
 //                        $ ( "#divStatus" ).text ( obj.message );
-//                        $ ( "#divStatus" ).css ( "backgroundColor", "red" );
+                       $(".notifications").css("color", "red").text( obj.status );
                 }
             });
         });
@@ -581,20 +580,15 @@ and open the template in the editor.
 
                             <div class="leftnavmenuinnerdown">
                                 <div class="leftnavmenuinnerdownnav">
-                                     <div>
-                                        <button class="buttonsbuttons">
-                                            <span><i class="fa fa-2x fa-folder-o"></i>&nbsp;&nbsp;&nbsp;Folder</span>
-
-                                        </button>
-                                    </div>
+                                     
                                     <div>
                                         <button class="buttonsbuttons" onclick="display_assigned()">
-                                            <span><i class="fa fa-chevron-up">&nbsp;&nbsp;&nbsp;Assigned Tasks</i></span>
+                                            <span><i class="">&nbsp;&nbsp;&nbsp;Assigned Tasks</i></span>
                                         </button>
                                     </div>
                                     <div>
                                         <button class="buttonsbuttons" id="mytasks">
-                                            <span><i class="fa fa-book">&nbsp;&nbsp;&nbsp;My Tasks</i></span>
+                                            <span><i class="">&nbsp;&nbsp;&nbsp;My Tasks</i></span>
                                         </button>
                                     </div>
                                     <div>
@@ -607,8 +601,9 @@ and open the template in the editor.
                             </div>
 
                             <div class="leftnavmenuinnernotification">
-                                <div class="leftnavmenuinnernotificationinner">
-                                    <!--Notification:-->
+                                <div class="leftnavmenuinnernotificationinner" style="padding-top: 50px;">
+                                    Notification:</br>
+                                    <span class="notifications"></span>
                                 </div>
                             </div>
 

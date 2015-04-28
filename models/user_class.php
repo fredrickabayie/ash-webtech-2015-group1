@@ -84,7 +84,12 @@ class User extends adb
                                 on system_tasks.user_id=system_users.user_id 
                                 and system_tasks.task_collaborator='$user_id'
                                 order by task_id desc";
-       return $this->query ( $display_query );
+       try
+       {
+           return $this->query ( $display_query );
+       } catch (Exception $ex) {
+           
+       }
     }//end of_user_display_tasks ( )
     
     
@@ -95,7 +100,7 @@ class User extends adb
      */
     function user_preview_task ( $task_id )
     {
-        $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, 
+        $preview_query = "select task_id, task_description, task_title, user_fname, user_sname, task_status,
                                     system_tasks.user_id, path, task_collaborator, task_start_date, task_end_date
                                     from system_tasks
                                     join system_users
